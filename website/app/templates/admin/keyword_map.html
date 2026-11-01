@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title %}Keyword-to-URL Research Map | Admin Dashboard{% endblock %}
+
+{% block content %}
+<div class="container" style="padding-top: 2rem; padding-bottom: 4rem;">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+    <div>
+      <nav class="breadcrumbs" aria-label="Breadcrumbs">
+        <a href="/admin/dashboard">Dashboard</a>
+        <span class="breadcrumbs-sep">&rsaquo;</span>
+        <span style="color: var(--text-primary); font-weight: 500;">Keyword Map</span>
+      </nav>
+      <h1 style="font-size: 2.25rem; margin: 0;">SEO Keyword-to-URL Content Architecture</h1>
+      <p style="font-size: 1rem; color: var(--text-muted); margin-top: 0.25rem;">
+        Complete topical mapping of all 501 keywords organized by search intent and target URL.
+      </p>
+    </div>
+    <div>
+      <a href="/admin/keyword-map/download" class="btn btn-primary">📥 Download Full CSV (501 Keywords)</a>
+    </div>
+  </div>
+
+  <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 1.25rem; margin-bottom: 1.5rem;">
+    <input 
+      type="text" 
+      id="tableFilterInput" 
+      class="form-control" 
+      placeholder="Live filter by keyword, group, or URL..."
+      aria-label="Filter keywords"
+    >
+  </div>
+
+  <div class="table-responsive">
+    <table class="table-editorial table-interactive">
+      <thead>
+        <tr>
+          <th data-sortable="true">Keyword</th>
+          <th data-sortable="true">Keyword Group</th>
+          <th data-sortable="true">Intended URL</th>
+          <th>Type</th>
+          <th>Search Intent</th>
+          <th>Verification</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in keywords %}
+        <tr>
+          <td><strong>{{ row.Keyword }}</strong></td>
+          <td><span class="badge badge-info">{{ row['Keyword Group'] }}</span></td>
+          <td>
+            {% if row['Intended URL'] != 'N/A (Excluded)' %}
+              <a href="{{ row['Intended URL'] }}" target="_blank"><code>{{ row['Intended URL'] }}</code></a>
+            {% else %}
+              <span style="color: var(--text-muted);">{{ row['Intended URL'] }}</span>
+            {% endif %}
+          </td>
+          <td>
+            {% if row['Primary or Secondary'] == 'Primary' %}
+              <span class="badge badge-success">Primary</span>
+            {% elif row['Primary or Secondary'] == 'Secondary' %}
+              <span class="badge badge-info">Secondary</span>
+            {% else %}
+              <span class="badge badge-warning">Excluded</span>
+            {% endif %}
+          </td>
+          <td style="font-size: 0.85rem;">{{ row['Search Intent'] }}</td>
+          <td>
+            {% if 'Verified' in row['Verification Status'] %}
+              <span class="badge badge-success">{{ row['Verification Status'] }}</span>
+            {% else %}
+              <span class="badge badge-warning">{{ row['Verification Status'] }}</span>
+            {% endif %}
+          </td>
+          <td style="font-size: 0.8rem; color: var(--text-muted); max-width: 250px;">{{ row.Notes }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+
+{% block title %}{% if article %}Edit: {{ article.title }}{% else %}New Article{% endif %} | Admin Dashboard{% endblock %}
+
+{% block content %}
+<div class="container" style="padding-top: 2rem; padding-bottom: 4rem; max-width: 900px;">
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <a href="/admin/dashboard">Dashboard</a>
+    <span class="breadcrumbs-sep">&rsaquo;</span>
+    <a href="/admin/articles">Articles</a>
+    <span class="breadcrumbs-sep">&rsaquo;</span>
+    <span style="color: var(--text-primary); font-weight: 500;">{% if article %}Edit Article{% else %}Create Article{% endif %}</span>
+  </nav>
+
+  <div class="article-header">
+    <h1 style="font-size: 2.25rem; margin-bottom: 0.5rem;">{% if article %}Edit Article{% else %}Create Editorial Article{% endif %}</h1>
+  </div>
+
+  <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 2rem; box-shadow: var(--shadow-sm);">
+    <form action="{% if article %}/admin/articles/edit/{{ article.id }}{% else %}/admin/articles/new{% endif %}" method="post">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+
+      <div class="form-group">
+        <label for="title" class="form-label">Article Title (H1)</label>
+        <input type="text" id="title" name="title" class="form-control" value="{{ article.title if article else '' }}" required>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+        <div class="form-group">
+          <label for="slug" class="form-label">URL Slug</label>
+          <input type="text" id="slug" name="slug" class="form-control" value="{{ article.slug if article else '' }}" placeholder="e.g. dairy-queen-blizzard-prices-sizes" required>
+        </div>
+
+        <div class="form-group">
+          <label for="category_id" class="form-label">Category</label>
+          <select id="category_id" name="category_id" class="form-control">
+            <option value="">Select category...</option>
+            {% for cat in categories %}
+            <option value="{{ cat.id }}" {% if article and article.category_id == cat.id %}selected{% endif %}>{{ cat.name }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="meta_title" class="form-label">SEO Meta Title (<title> tag)</label>
+        <input type="text" id="meta_title" name="meta_title" class="form-control" value="{{ article.meta_title if article else '' }}">
+      </div>
+
+      <div class="form-group">
+        <label for="meta_description" class="form-label">Meta Description</label>
+        <textarea id="meta_description" name="meta_description" class="form-control" style="min-height: 70px;">{{ article.meta_description if article else '' }}</textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="canonical_url" class="form-label">Canonical URL (optional, defaults to current)</label>
+        <input type="url" id="canonical_url" name="canonical_url" class="form-control" value="{{ article.canonical_url if article else '' }}" placeholder="https://menupriceguide.com/articles/slug">
+      </div>
+
+      <div class="form-group">
+        <label for="summary" class="form-label">Executive Summary</label>
+        <textarea id="summary" name="summary" class="form-control" style="min-height: 80px;">{{ article.summary if article else '' }}</textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="content" class="form-label">Full Article HTML / Markdown Content</label>
+        <textarea id="content" name="content" class="form-control" style="min-height: 350px; font-family: monospace; font-size: 0.9rem;" required>{{ article.content if article else '' }}</textarea>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+        <div class="form-group">
+          <label for="status" class="form-label">Publication Status</label>
+          <select id="status" name="status" class="form-control">
+            <option value="published" {% if not article or article.status == 'published' %}selected{% endif %}>Published</option>
+            <option value="draft" {% if article and article.status == 'draft' %}selected{% endif %}>Draft</option>
+            <option value="archived" {% if article and article.status == 'archived' %}selected{% endif %}>Archived</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="review_status" class="form-label">Fact-Check Status</label>
+          <select id="review_status" name="review_status" class="form-control">
+            <option value="verified" {% if not article or article.review_status == 'verified' %}selected{% endif %}>Verified</option>
+            <option value="needs_review" {% if article and article.review_status == 'needs_review' %}selected{% endif %}>Needs Review</option>
+            <option value="pending_update" {% if article and article.review_status == 'pending_update' %}selected{% endif %}>Pending Update</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="author" class="form-label">Author / Byline</label>
+          <input type="text" id="author" name="author" class="form-control" value="{{ article.author if article else 'DQ Menu Guidance Editorial Staff' }}">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+          <input type="checkbox" name="is_cornerstone" value="1" {% if article and article.is_cornerstone %}checked{% endif %}>
+          <span style="font-weight: 600; color: var(--text-primary);">Designate as Cornerstone Editorial Guide</span>
+        </label>
+      </div>
+
+      <div class="form-group">
+        <label for="sources_json" class="form-label">Primary Sources (JSON format: [{"title":"...", "url":"..."}])</label>
+        <textarea id="sources_json" name="sources_json" class="form-control" style="min-height: 80px; font-family: monospace;">{{ article.sources_json if article else '[]' }}</textarea>
+      </div>
+
+      <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+        <button type="submit" class="btn btn-primary" style="padding: 12px 24px;">Save & Publish Article &rarr;</button>
+        <a href="/admin/articles" class="btn btn-outline" style="padding: 12px 24px;">Cancel</a>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

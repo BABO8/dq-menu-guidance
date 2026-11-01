@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}Manage Articles | Admin Dashboard{% endblock %}
+
+{% block content %}
+<div class="container" style="padding-top: 2rem; padding-bottom: 4rem;">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+    <div>
+      <nav class="breadcrumbs" aria-label="Breadcrumbs">
+        <a href="/admin/dashboard">Dashboard</a>
+        <span class="breadcrumbs-sep">&rsaquo;</span>
+        <span style="color: var(--text-primary); font-weight: 500;">Articles</span>
+      </nav>
+      <h1 style="font-size: 2.25rem; margin: 0;">Editorial Articles ({{ articles|length }})</h1>
+    </div>
+    <div>
+      <a href="/admin/articles/new" class="btn btn-primary">+ Write New Article</a>
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table-editorial">
+      <thead>
+        <tr>
+          <th>Title & Slug</th>
+          <th>Category</th>
+          <th>Status</th>
+          <th>Review Status</th>
+          <th>Last Fact-Checked</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for art in articles %}
+        <tr>
+          <td>
+            <strong>{{ art.title }}</strong>
+            <div style="font-size: 0.8rem; color: var(--text-muted);">/articles/{{ art.slug }}</div>
+          </td>
+          <td><span class="badge badge-info">{{ art.category_name or "General" }}</span></td>
+          <td><span class="badge badge-success">{{ art.status }}</span></td>
+          <td>
+            {% if art.review_status == 'verified' %}
+              <span class="badge badge-success">Verified</span>
+            {% else %}
+              <span class="badge badge-warning">{{ art.review_status }}</span>
+            {% endif %}
+          </td>
+          <td style="font-size: 0.85rem;">{{ art.updated_at }}</td>
+          <td>
+            <div style="display: flex; gap: 0.5rem;">
+              <a href="/admin/articles/edit/{{ art.id }}" class="btn btn-outline" style="font-size: 0.8rem; padding: 4px 8px;">Edit</a>
+              <a href="/articles/{{ art.slug }}" target="_blank" class="btn btn-outline" style="font-size: 0.8rem; padding: 4px 8px;">View</a>
+              <form action="/admin/articles/delete/{{ art.id }}" method="post" onsubmit="return confirm('Are you sure you want to delete this article?');" style="display: inline;">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+                <button type="submit" class="btn btn-outline" style="font-size: 0.8rem; padding: 4px 8px; color: var(--color-brand);">Delete</button>
+              </form>
+            </div>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% block title %}Contact Our Editorial Team | DQ Menu Guidance{% endblock %}
+
+{% block meta_description %}Contact the editors of DQ Menu Guidance for price correction submissions, editorial inquiries, or consumer research feedback.{% endblock %}
+
+{% block structured_data %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Contact DQ Menu Guidance Editors",
+  "description": "Editorial contact, price correction submission, and consumer inquiries.",
+  "url": "{{ canonical_url }}"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "{{ settings.SITE_URL }}/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Contact Us",
+      "item": "{{ canonical_url }}"
+    }
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="container" style="padding-top: 2rem; padding-bottom: 4rem; max-width: 800px;">
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <a href="/">Home</a>
+    <span class="breadcrumbs-sep">&rsaquo;</span>
+    <span style="color: var(--text-primary); font-weight: 500;">Contact Us</span>
+  </nav>
+
+  <div class="article-header">
+    <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">Contact Our Editorial Team</h1>
+    <p style="font-size: 1.1rem; color: var(--text-muted); line-height: 1.6;">
+      Have a price correction, a newly launched regional flavor alert, or general feedback about our fast-food pricing guides? We welcome verified submissions from consumers and industry observers.
+    </p>
+  </div>
+
+  <div class="callout callout-warning">
+    <h3 style="font-size: 1.05rem; margin-top: 0; margin-bottom: 0.35rem; color: var(--color-amber);">Customer Service & Store Orders Disclaimer</h3>
+    <p style="font-size: 0.9rem; margin-bottom: 0;">
+      <strong>Please note:</strong> DQ Menu Guidance is an <strong>independent research website</strong>. We cannot process refunds, cancel online delivery orders, check local restaurant inventory, or accept job applications. For customer service regarding an order placed at a Dairy Queen restaurant, please contact your local store or official corporate support at <a href="https://www.dairyqueen.com" target="_blank" rel="noopener noreferrer">dairyqueen.com</a>.
+    </p>
+  </div>
+
+  {% if success_message %}
+  <div style="background: var(--color-success-light); border: 1px solid var(--color-success); color: var(--color-success); padding: 1.25rem; border-radius: var(--radius-sm); margin-bottom: 2rem;">
+    <strong>Thank you!</strong> {{ success_message }}
+  </div>
+  {% endif %}
+
+  {% if error_message %}
+  <div style="background: var(--bg-accent); border: 1px solid var(--color-brand); color: var(--color-brand); padding: 1.25rem; border-radius: var(--radius-sm); margin-bottom: 2rem;">
+    <strong>Submission Error:</strong> {{ error_message }}
+  </div>
+  {% endif %}
+
+  <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 2rem; box-shadow: var(--shadow-sm);">
+    <form action="/contact" method="post">
+      <!-- CSRF Token -->
+      <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+      
+      <!-- Anti-Spam Honeypot (hidden from real users) -->
+      <div style="display: none;" aria-hidden="true">
+        <label for="hp_field">Leave this empty</label>
+        <input type="text" id="hp_field" name="website_verification_url" tabindex="-1" autocomplete="off">
+      </div>
+
+      <div class="form-group">
+        <label for="name" class="form-label">Your Name</label>
+        <input type="text" id="name" name="name" class="form-control" placeholder="Jane Doe" required maxlength="80">
+      </div>
+
+      <div class="form-group">
+        <label for="email" class="form-label">Your Email Address</label>
+        <input type="email" id="email" name="email" class="form-control" placeholder="jane@example.com" required maxlength="120">
+      </div>
+
+      <div class="form-group">
+        <label for="subject" class="form-label">Subject</label>
+        <select id="subject" name="subject" class="form-control" required>
+          <option value="">Select an inquiry category...</option>
+          <option value="Price Correction / Local Discrepancy">Price Correction / Local Discrepancy</option>
+          <option value="New / Seasonal Flavor Alert">New / Seasonal Flavor Alert</option>
+          <option value="Nutritional / Allergen Fact Correction">Nutritional / Allergen Fact Correction</option>
+          <option value="Editorial Feedback">Editorial Feedback / Question</option>
+          <option value="Other">Other Inquiry</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="message" class="form-label">Message Details</label>
+        <textarea id="message" name="message" class="form-control" placeholder="Please describe the menu item, store city/state, and verified price or observation..." required minlength="10" maxlength="2000"></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary" style="width: 100%; padding: 12px;">Submit Message to Editors &rarr;</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

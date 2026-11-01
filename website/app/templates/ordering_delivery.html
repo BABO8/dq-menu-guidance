@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+
+{% block title %}Dairy Queen Delivery & Online Ordering Guide (2026) | DQ Menu Guidance{% endblock %}
+
+{% block meta_description %}How to order Dairy Queen online and get Blizzard delivery: comparing official DQ app pickup against DoorDash, Uber Eats, and Grubhub markups.{% endblock %}
+
+{% block structured_data %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can you get Dairy Queen Blizzards delivered?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, Dairy Queen delivery is available in most US metropolitan areas through third-party platforms including DoorDash, Uber Eats, and Grubhub. However, items typically carry a 15% to 25% price markup over store counter prices."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the cheapest way to order Dairy Queen online?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ordering ahead for counter or drive-thru pickup using the official Dairy Queen mobile app guarantees in-store menu pricing and avoids delivery markup fees."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How far in advance do I need to order an ice cream cake online?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Standard 8-inch and 10-inch round cakes in the freezer display can be picked up immediately with free hand-piped writing. Custom photo cakes or Blizzard cakes ordered through DQCakes.com typically require 24 to 48 hours notice."
+      }
+    }
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="container" style="padding-top: 2rem; padding-bottom: 3.5rem;">
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <a href="/">Home</a>
+    <span class="breadcrumbs-sep">&rsaquo;</span>
+    <a href="/menu">Menu & Prices</a>
+    <span class="breadcrumbs-sep">&rsaquo;</span>
+    <span style="color: var(--text-primary); font-weight: 500;">Ordering & Delivery</span>
+  </nav>
+
+  <div class="article-header">
+    <div class="hero-pill">Convenience & Markup Analysis</div>
+    <h1 style="font-size: 2.75rem; margin-bottom: 0.75rem;">Dairy Queen Online Ordering & Delivery Guide (2026)</h1>
+    <p style="font-size: 1.15rem; color: var(--text-muted); max-width: 820px; line-height: 1.7;">
+      Craving a Blizzard delivered to your door? Understand the real cost differences between official DQ App order-ahead pickup versus third-party delivery apps like DoorDash, Uber Eats, and Grubhub.
+    </p>
+
+    <!-- Featured Delivery Photography Banner -->
+    <div class="article-lead-image-wrap" style="max-width: 780px;">
+      <picture>
+        <source srcset="/static/images/homepage-food-hero.webp" type="image/webp">
+        <img 
+          src="/static/images/homepage-food-hero.webp" 
+          alt="Dairy Queen Menu With Prices 2026 assortment including Blizzards, Stackburgers, chicken strips and fries" 
+          class="article-lead-img" 
+          width="800" 
+          height="447" 
+          loading="lazy" 
+          decoding="async"
+         fetchpriority="high">
+      </picture>
+      <div class="article-lead-caption">Takeout and delivery spreads: compare direct mobile app pickup vs. third-party couriers.</div>
+    </div>
+  </div>
+
+  <div class="callout callout-warning">
+    <h3 style="font-size: 1.1rem; margin-top: 0; margin-bottom: 0.35rem; color: var(--color-amber);">Third-Party Delivery Markup Notice</h3>
+    <p style="font-size: 0.95rem; margin-bottom: 0;">
+      Prices for Dairy Queen items listed on DoorDash, Uber Eats, and Grubhub are set by franchisees and typically carry a <strong>15% to 25% markup</strong> over in-store counter prices, in addition to delivery fees, service charges, and driver gratuity.
+    </p>
+  </div>
+
+  <div class="table-responsive" style="margin-bottom: 3rem;">
+    <table class="table-editorial">
+      <thead>
+        <tr>
+          <th>Ordering Channel</th>
+          <th>Price Markup vs. In-Store</th>
+          <th>Earns DQ Rewards Points?</th>
+          <th>Blizzard Melting Risk</th>
+          <th>Best Recommended For</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Official DQ® App (Order Ahead Pickup)</strong></td>
+          <td><span class="badge badge-success">0% (Exact In-Store Price)</span></td>
+          <td>Yes (10 points per $1)</td>
+          <td>Minimal (kept in freezer until arrival)</td>
+          <td>Best overall value and freshness</td>
+        </tr>
+        <tr>
+          <td><strong>DoorDash Delivery</strong></td>
+          <td>15% – 25% menu markup</td>
+          <td>No (third-party checkout)</td>
+          <td>Moderate (depends on driver thermal bag)</td>
+          <td>DoorPass members wanting home delivery</td>
+        </tr>
+        <tr>
+          <td><strong>Uber Eats Delivery</strong></td>
+          <td>15% – 25% menu markup</td>
+          <td>No (third-party checkout)</td>
+          <td>Moderate (transit time varies)</td>
+          <td>Uber One users with delivery vouchers</td>
+        </tr>
+        <tr>
+          <td><strong>Grubhub Delivery</strong></td>
+          <td>15% – 25% menu markup</td>
+          <td>No (third-party checkout)</td>
+          <td>Moderate (transit time varies)</td>
+          <td>Grubhub+ members</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 2.5rem;">
+    <h2 style="font-size: 1.85rem; margin-top: 0; margin-bottom: 1rem;">Can Ice Cream Cakes Be Delivered?</h2>
+    <p style="font-size: 1.05rem; line-height: 1.8; color: var(--text-secondary);">
+      While some DoorDash and Uber Eats listings include standard 8-inch round cakes from the walk-in display freezer, delivery drivers transport orders in standard vehicles that lack commercial sub-zero refrigeration. Because Dairy Queen soft serve begins losing structural integrity at temperatures above 25°F, ordering celebration cakes through third-party couriers during summer months carries high risk of melting.
+    </p>
+    <p style="font-size: 1.05rem; line-height: 1.8; color: var(--text-secondary);">
+      <strong>Our Recommendation:</strong> Pre-order your cake online via the official Dairy Queen cake portal (<a href="https://www.dairyqueen.com/en-us/menu/cakes/" target="_blank" rel="noopener noreferrer">dairyqueen.com</a>) and pick it up personally with an insulated cooler bag.
+    </p>
+  </div>
+</div>
+{% endblock %}

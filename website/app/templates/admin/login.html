@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Sign In | DQ Menu Guidance{% endblock %}
+
+{% block content %}
+<div class="container" style="padding: 4rem 1.5rem; max-width: 480px;">
+  <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 2.5rem; box-shadow: var(--shadow-md);">
+    <div style="text-align: center; margin-bottom: 2rem;">
+      <img src="/static/images/logo.svg" alt="DQ Menu Guidance Logo" width="56" height="56" class="brand-logo-img" style="margin: 0 auto 0.5rem auto;">
+      <h1 style="font-size: 1.85rem; margin-top: 1rem; margin-bottom: 0.25rem;">Editorial Dashboard</h1>
+      <p style="font-size: 0.9rem; color: var(--text-muted);">Sign in with administrator credentials</p>
+    </div>
+
+    {% if error %}
+    <div style="background: var(--bg-accent); border: 1px solid var(--color-brand); color: var(--color-brand); padding: 12px; border-radius: var(--radius-sm); font-size: 0.9rem; margin-bottom: 1.5rem;">
+      {{ error }}
+    </div>
+    {% endif %}
+
+    <form action="/admin/login" method="post">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+
+      <div class="form-group">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" id="username" name="username" class="form-control" required autocomplete="username" autofocus>
+      </div>
+
+      <div class="form-group">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" id="password" name="password" class="form-control" required autocomplete="current-password">
+      </div>
+
+      <button type="submit" class="btn btn-primary" style="width: 100%; padding: 12px; margin-top: 1rem;">
+        Sign In to Admin &rarr;
+      </button>
+    </form>
+
+    <div style="margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--border-light); font-size: 0.8rem; color: var(--text-muted); text-align: center;">
+      Protected administrative route. Unauthorized access attempts are monitored and logged.
+    </div>
+  </div>
+</div>
+{% endblock %}

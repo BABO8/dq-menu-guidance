@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block title %}Dairy Queen Treats, Cones, Sundaes & Dilly Bars (2026 Prices) | DQ Menu Guidance{% endblock %}
+
+{% block meta_description %}Explore Dairy Queen soft-serve treats: classic cones, chocolate dipped cones, Dilly® Bars, Buster Bars, hot fudge sundaes, and hand-spun milkshakes.{% endblock %}
+
+{% block content %}
+<div class="container" style="padding-top: 2rem; padding-bottom: 3.5rem;">
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <a href="/">Home</a>
+    <span class="breadcrumbs-sep">&rsaquo;</span>
+    <a href="/menu">Menu & Prices</a>
+    <span class="breadcrumbs-sep">&rsaquo;</span>
+    <span style="color: var(--text-primary); font-weight: 500;">Treats & Novelties</span>
+  </nav>
+
+  <div class="article-header">
+    <div class="hero-pill">Soft Serve Heritage Since 1940</div>
+    <h1 style="font-size: 2.75rem; margin-bottom: 0.75rem;">Dairy Queen Treats, Cones, Sundaes & Shakes (2026)</h1>
+    <p style="font-size: 1.15rem; color: var(--text-muted); max-width: 820px; line-height: 1.7;">
+      The iconic curl on top: explore verified prices and portion sizes for Dairy Queen's original soft-serve cones, hard chocolate shell dipped cones, packaged Dilly® Bars, and hand-spun milkshakes.
+    </p>
+
+    <!-- Visual Treats Showcase Grid -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; margin: 1.5rem 0 2rem 0;">
+      <div style="border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border-light); background: var(--bg-subtle);">
+        <picture>
+          <source srcset="/static/images/soft-serve-cone.webp" type="image/webp">
+          <img src="/static/images/soft-serve-cone.webp" alt="Dairy Queen classic vanilla soft-serve ice cream cone prices 2026" style="width: 100%; height: 200px; object-fit: cover; display: block;" loading="lazy" width="600" height="448" decoding="async">
+        </picture>
+        <div style="padding: 10px 12px; font-size: 0.9rem; font-weight: 600; text-align: center;">Soft Serve Cones</div>
+      </div>
+      <div style="border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border-light); background: var(--bg-subtle);">
+        <picture>
+          <source srcset="/static/images/chocolate-dipped-cone.webp" type="image/webp">
+          <img src="/static/images/chocolate-dipped-cone.webp" alt="Dairy Queen chocolate dipped cone prices and calories 2026" style="width: 100%; height: 200px; object-fit: cover; display: block;" loading="lazy" width="600" height="448" decoding="async">
+        </picture>
+        <div style="padding: 10px 12px; font-size: 0.9rem; font-weight: 600; text-align: center;">Chocolate Dipped Cones</div>
+      </div>
+      <div style="border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border-light); background: var(--bg-subtle);">
+        <picture>
+          <source srcset="/static/images/ice-cream-sundae.webp" type="image/webp">
+          <img src="/static/images/ice-cream-sundae.webp" alt="Dairy Queen hot fudge sundae treats menu with prices 2026" style="width: 100%; height: 200px; object-fit: cover; display: block;" loading="lazy" width="600" height="448" decoding="async">
+        </picture>
+        <div style="padding: 10px 12px; font-size: 0.9rem; font-weight: 600; text-align: center;">Hot Fudge Sundaes</div>
+      </div>
+      <div style="border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border-light); background: var(--bg-subtle);">
+        <picture>
+          <source srcset="/static/images/milkshakes.webp" type="image/webp">
+          <img src="/static/images/milkshakes.webp" alt="Dairy Queen hand-spun milkshakes and classic malts prices 2026" style="width: 100%; height: 200px; object-fit: cover; display: block;" loading="lazy" width="600" height="448" decoding="async">
+        </picture>
+        <div style="padding: 10px 12px; font-size: 0.9rem; font-weight: 600; text-align: center;">Hand-Spun Milkshakes</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cards-grid" style="margin-bottom: 3rem;">
+    {% for item in treat_items %}
+    <div class="card">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+        <span class="card-badge" style="background: var(--color-brand-light); color: var(--color-brand);">
+          {{ item.category_name }}
+        </span>
+        <span class="badge badge-success">{{ item.verification_status }}</span>
+      </div>
+
+      <h3 class="card-title" style="margin-top: 0.5rem;">{{ item.name }}</h3>
+      <p class="card-meta">{{ item.sizes_available }}</p>
+      <p class="card-body">{{ item.description }}</p>
+
+      <div style="background: var(--bg-subtle); border-radius: var(--radius-sm); padding: 8px 12px; margin-bottom: 1rem; font-size: 0.85rem;">
+        <div><strong>Calories:</strong> {{ item.calories }}</div>
+        {% if item.allergens %}<div><strong>Allergens:</strong> {{ item.allergens }}</div>{% endif %}
+      </div>
+
+      <div class="card-footer">
+        <span class="price-col" style="color: var(--color-brand);">{{ item.price_formatted }}</span>
+        <span style="font-size: 0.8rem; color: var(--text-muted);">Verified {{ item.last_verified }}</span>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 2.5rem;">
+    <h2 style="font-size: 1.85rem; margin-top: 0; margin-bottom: 1rem;">The History of the Dilly® Bar</h2>
+    <p style="font-size: 1.05rem; line-height: 1.8; color: var(--text-secondary);">
+      Invented in 1955 at a Dairy Queen in Moorhead, Minnesota, when a franchisee poured soft serve onto a paper plate, inserted a stick, and dunked it in cold chocolate coating, the Dilly® Bar has become an American fast-food icon. Today, Dilly Bars are sold individually and in discounted 6-pack take-home boxes in Chocolate, Cherry, Butterscotch, and Non-Dairy Vegan varieties.
+    </p>
+    <div style="margin-top: 1.5rem;">
+      <a href="/menu" class="btn btn-primary">Return to Master Price Table &rarr;</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

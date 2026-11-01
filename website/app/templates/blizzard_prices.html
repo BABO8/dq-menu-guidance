@@ -1,0 +1,282 @@
+{% extends "base.html" %}
+
+{% block title %}Dairy Queen Blizzard Prices & Sizes (2026 Analysis) | DQ Menu Guidance{% endblock %}
+
+{% block meta_description %}Compare 2026 Dairy Queen Blizzard prices across Mini, Small, Medium, and Large cup sizes. Fluid ounces, average prices, and price-per-ounce value ratings.{% endblock %}
+
+{% block content %}
+<div class="container" style="padding-top: 2rem; padding-bottom: 3.5rem;">
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <a href="/">Home</a>
+    <span class="breadcrumbs-sep">&rsaquo;</span>
+    <a href="/blizzards">Blizzard® Flavors</a>
+    <span class="breadcrumbs-sep">&rsaquo;</span>
+    <span style="color: var(--text-primary); font-weight: 500;">Prices & Sizes</span>
+  </nav>
+
+  <div class="article-header">
+    <div class="hero-pill">Cup Sizes & Price-per-Ounce Economics</div>
+    <h1 style="font-size: 2.75rem; margin-bottom: 0.75rem;">Dairy Queen Blizzard® Prices & Sizes (2026)</h1>
+    <p style="font-size: 1.15rem; color: var(--text-muted); max-width: 820px; line-height: 1.7;">
+      How much does a Blizzard cost at Dairy Queen? Compare verified US price averages across all four cup sizes, analyze the fluid ounce math, and discover why size upgrades deliver significant volume value.
+    </p>
+
+    <!-- Featured Blizzard Photography Banner -->
+    <div class="article-lead-image-wrap" style="max-width: 780px;">
+      <picture>
+        <source srcset="/static/images/blizzard-chocolate-cookie.webp" type="image/webp">
+        <img 
+          src="/static/images/blizzard-chocolate-cookie.webp" 
+          alt="Dairy Queen Oreo Cookie Blizzard flavor and calorie breakdown 2026" 
+          class="article-lead-img" 
+          width="780" 
+          height="438" 
+          loading="lazy" 
+          decoding="async"
+        >
+      </picture>
+      <div class="article-lead-caption">Blizzard prices range from $3.79 for a Mini up to $6.59 for a 21 oz Large (2026 US National Average).</div>
+    </div>
+  </div>
+
+  <!-- Size Comparison Cards Grid -->
+  <div class="cards-grid" style="margin-bottom: 2.5rem;">
+    <div class="card" style="border-top: 4px solid var(--color-brand);">
+      <span class="card-badge" style="background: var(--bg-subtle);">Portion Control</span>
+      <h3 class="card-title">Mini Blizzard</h3>
+      <div style="font-size: 2rem; font-weight: 800; color: var(--color-brand); margin: 0.5rem 0;">$3.79 (Avg)</div>
+      <p class="card-meta">Volume: <strong>6 fl oz</strong> (~177 ml)</p>
+      <p class="card-body">
+        Introduced in 2010 to cater to health-conscious diners and younger children. Delivers approximately 350 to 450 calories depending on candy mix-ins.
+      </p>
+      <div class="card-footer">
+        <span>Est. Cost: <strong>~$0.63 / oz</strong></span>
+        <span class="badge badge-info">Light Treat</span>
+      </div>
+    </div>
+
+    <div class="card" style="border-top: 4px solid var(--color-info);">
+      <span class="card-badge" style="background: var(--bg-subtle);">Original Classic</span>
+      <h3 class="card-title">Small Blizzard</h3>
+      <div style="font-size: 2rem; font-weight: 800; color: var(--color-brand); margin: 0.5rem 0;">$4.89 (Avg)</div>
+      <p class="card-meta">Volume: <strong>12 fl oz</strong> (~355 ml)</p>
+      <p class="card-body">
+        The original single-serving portion when the treat debuted in 1985. Twice the volume of a Mini for only about a dollar more.
+      </p>
+      <div class="card-footer">
+        <span>Est. Cost: <strong>~$0.41 / oz</strong></span>
+        <span class="badge badge-success">Great Value</span>
+      </div>
+    </div>
+
+    <div class="card" style="border-top: 4px solid var(--color-success); transform: translateY(-4px); box-shadow: var(--shadow-md);">
+      <span class="card-badge" style="background: var(--color-success-light); color: var(--color-success);">Most Popular</span>
+      <h3 class="card-title">Medium Blizzard</h3>
+      <div style="font-size: 2rem; font-weight: 800; color: var(--color-brand); margin: 0.5rem 0;">$5.79 (Avg)</div>
+      <p class="card-meta">Volume: <strong>16 fl oz</strong> (1 US Pint / ~473 ml)</p>
+      <p class="card-body">
+        The most widely ordered size nationwide. Delivers optimal candy-to-soft-serve ratio across chocolate and fruit combinations.
+      </p>
+      <div class="card-footer">
+        <span>Est. Cost: <strong>~$0.36 / oz</strong></span>
+        <span class="badge badge-success">Best Balance</span>
+      </div>
+    </div>
+
+    <div class="card" style="border-top: 4px solid var(--color-purple);">
+      <span class="card-badge" style="background: var(--bg-subtle);">Maximum Volume</span>
+      <h3 class="card-title">Large Blizzard</h3>
+      <div style="font-size: 2rem; font-weight: 800; color: var(--color-brand); margin: 0.5rem 0;">$6.59 (Avg)</div>
+      <p class="card-meta">Volume: <strong>21 fl oz</strong> (~621 ml)</p>
+      <p class="card-body">
+        Substantial portion designed for big dessert cravings or sharing between two people. Lowest cost per fluid ounce of any size.
+      </p>
+      <div class="card-footer">
+        <span>Est. Cost: <strong>~$0.31 / oz</strong></span>
+        <span class="badge badge-purple">Max Volume</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Detailed Size & Value Table -->
+  <div class="table-responsive" style="margin-bottom: 3rem;">
+    <table class="table-editorial">
+      <thead>
+        <tr>
+          <th>Blizzard Cup Size</th>
+          <th>Fluid Ounces</th>
+          <th>Typical Price Range</th>
+          <th>Est. Cost per Ounce</th>
+          <th>Average Calorie Range</th>
+          <th>Best Recommended For</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Mini</strong></td>
+          <td>6 fl oz</td>
+          <td class="price-col">$3.79 ($3.79 – $4.39)</td>
+          <td>$0.63 / oz</td>
+          <td>350 – 450 kcal</td>
+          <td>Portion control, young kids, quick afternoon snack</td>
+        </tr>
+        <tr>
+          <td><strong>Small</strong></td>
+          <td>12 fl oz</td>
+          <td class="price-col">$4.89 ($4.89 – $5.39)</td>
+          <td>$0.41 / oz</td>
+          <td>560 – 710 kcal</td>
+          <td>Standard single treat without excess leftovers</td>
+        </tr>
+        <tr>
+          <td><strong>Medium</strong></td>
+          <td>16 fl oz</td>
+          <td class="price-col">$5.79 ($5.79 – $6.29)</td>
+          <td>$0.36 / oz</td>
+          <td>760 – 990 kcal</td>
+          <td>Most popular size; ideal balance of value and portion</td>
+        </tr>
+        <tr>
+          <td><strong>Large</strong></td>
+          <td>21 fl oz</td>
+          <td class="price-col">$6.59 ($6.59 – $7.19)</td>
+          <td>$0.31 / oz</td>
+          <td>1,020 – 1,340 kcal</td>
+          <td>Maximum volume per dollar; excellent for sharing</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <!-- U.S. Regional Price Comparison (2026) -->
+  <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 2rem; margin-bottom: 3rem;">
+    <div class="hero-pill" style="margin-bottom: 0.75rem;">State-by-State Pricing Dynamics</div>
+    <h2 style="font-size: 1.85rem; margin-top: 0; margin-bottom: 0.75rem;">U.S. Regional Blizzard Price Comparison (2026)</h2>
+    <p style="font-size: 1rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 1.5rem;">
+      Because over 99% of Dairy Queen locations are operated by independent franchisees, menu pricing varies across state lines based on municipal wages, refrigeration electricity rates, and commercial real estate costs. Below is our 2026 regional benchmark survey:
+    </p>
+
+    <div class="table-responsive">
+      <table class="table-editorial">
+        <thead>
+          <tr>
+            <th>Regional Tier</th>
+            <th>Representative U.S. States</th>
+            <th>Mini (6 oz)</th>
+            <th>Small (12 oz)</th>
+            <th>Medium (16 oz)</th>
+            <th>Large (21 oz)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Low-Cost Franchise Markets</strong></td>
+            <td>Texas, Ohio, Indiana, Oklahoma, Iowa</td>
+            <td class="price-col">$3.49</td>
+            <td class="price-col">$4.59</td>
+            <td class="price-col">$5.39</td>
+            <td class="price-col">$6.19</td>
+          </tr>
+          <tr>
+            <td><strong>National Average Markets</strong></td>
+            <td>Florida, Georgia, North Carolina, Arizona, Missouri</td>
+            <td class="price-col">$3.79</td>
+            <td class="price-col">$4.89</td>
+            <td class="price-col">$5.79</td>
+            <td class="price-col">$6.59</td>
+          </tr>
+          <tr>
+            <td><strong>High-Cost / Metro Markets</strong></td>
+            <td>California, New York, Washington, Massachusetts, Hawaii</td>
+            <td class="price-col">$4.29</td>
+            <td class="price-col">$5.49</td>
+            <td class="price-col">$6.39</td>
+            <td class="price-col">$7.29</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 1rem; margin-bottom: 0;">
+      <em>Note: Turnpikes, airport concourses, theme parks, and non-traditional venues may charge additional venue concession fees.</em>
+    </p>
+  </div>
+
+  <!-- Interactive U.S. State Price & Sales Tax Estimator -->
+  <div class="calculator-widget" id="dqPriceCalculator">
+    <div class="hero-pill" style="margin-bottom: 0.5rem; background: var(--bg-accent); color: var(--color-brand);">Interactive Tool</div>
+    <h3 style="font-size: 1.6rem; margin-top: 0; margin-bottom: 0.5rem;">U.S. State Price & Sales Tax Estimator</h3>
+    <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.5rem;">
+      Select your target treat size and state economic tier to calculate estimated menu prices, state sales tax, and total out-of-pocket costs at checkout.
+    </p>
+
+    <div class="calc-grid">
+      <div class="form-group" style="margin-bottom: 0;">
+        <label for="blizzCalcItem" class="form-label">Select Blizzard® Size or Treat</label>
+        <select id="blizzCalcItem" class="form-control calc-item-select">
+          <option value="mini-blizzard">Mini Blizzard® (6 oz) — $4.69 base</option>
+          <option value="small-blizzard" selected>Small Blizzard® (12 oz) — $5.59 base</option>
+          <option value="medium-blizzard">Medium Blizzard® (16 oz) — $6.29 base</option>
+          <option value="large-blizzard">Large Blizzard® (21 oz) — $7.19 base</option>
+          <option value="round-cake-8">8" Round Ice Cream Cake — $31.99 base</option>
+        </select>
+      </div>
+
+      <div class="form-group" style="margin-bottom: 0;">
+        <label for="blizzCalcRegion" class="form-label">Select U.S. State / Cost Tier</label>
+        <select id="blizzCalcRegion" class="form-control calc-region-select">
+          <option value="avg" selected>Average U.S. Baseline (FL, GA, NC, AZ, PA, MI) — 1.00x & 7.00% Tax</option>
+          <option value="low">Low-Cost States (TX, OH, IN, OK, MO, TN) — 0.93x & 6.25% Tax</option>
+          <option value="high">High-Cost States (CA, NY, WA, MA, NJ, HI) — 1.12x & 8.88% Tax</option>
+        </select>
+      </div>
+
+      <div class="form-group" style="margin-bottom: 0; max-width: 130px;">
+        <label for="blizzCalcQty" class="form-label">Quantity</label>
+        <input type="number" id="blizzCalcQty" class="form-control calc-qty-input" value="1" min="1" max="20">
+      </div>
+    </div>
+
+    <!-- Calculated Output Box -->
+    <div class="calc-result-box">
+      <div class="calc-stat-item">
+        <span class="calc-stat-label">National Base</span>
+        <span class="calc-stat-val calc-base-price">$5.59</span>
+      </div>
+      <div class="calc-stat-item">
+        <span class="calc-stat-label">Est. Menu Price</span>
+        <span class="calc-stat-val calc-adj-price">$5.59</span>
+      </div>
+      <div class="calc-stat-item">
+        <span class="calc-stat-label">Estimated Tax</span>
+        <span class="calc-stat-val calc-tax">$0.39 (7.00%)</span>
+      </div>
+      <div class="calc-stat-item">
+        <span class="calc-stat-label">Total at Checkout</span>
+        <span class="calc-stat-val highlight calc-total">$5.98</span>
+      </div>
+      <div class="calc-stat-item">
+        <span class="calc-stat-label">Calories</span>
+        <span class="calc-stat-val success calc-calories">560 - 740 kcal</span>
+      </div>
+    </div>
+
+    <div class="calc-note" style="margin-top: 1rem; font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">
+      <strong>Standard Franchise Tier:</strong> Estimated state sales tax calculated at 7.00%. Independent franchisees set final store prices.
+    </div>
+  </div>
+
+  <!-- Pricing FAQs & Disclaimers -->
+  <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 2rem;">
+    <h2 style="font-size: 1.75rem; margin-top: 0; margin-bottom: 1rem;">Why Do Blizzard Prices Vary by Location?</h2>
+    <p style="font-size: 1.05rem; line-height: 1.8; color: var(--text-secondary);">
+      Because Dairy Queen franchises are individually owned, pricing reflects local market dynamics. A franchise operating in Manhattan, Hawaii, or an airport terminal incurs significantly higher commercial rent and labor overhead than a location in suburban Missouri or rural Texas. Additionally, Royal Blizzards (which feature a core filled with fudge or fruit) generally cost \$0.30 to \$0.50 more than traditional Candy Classics.
+    </p>
+
+    <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+      <a href="/articles/dairy-queen-blizzard-prices-sizes" class="btn btn-primary">Read Complete Value Breakdown Article &rarr;</a>
+      <a href="/blizzards/nutrition" class="btn btn-outline">Check Blizzard Calorie Chart</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

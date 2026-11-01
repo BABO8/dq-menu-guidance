@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% block title %}Fact-Checking & Price Verification Queue | Admin Dashboard{% endblock %}
+
+{% block content %}
+<div class="container" style="padding-top: 2rem; padding-bottom: 4rem;">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+    <div>
+      <nav class="breadcrumbs" aria-label="Breadcrumbs">
+        <a href="/admin/dashboard">Dashboard</a>
+        <span class="breadcrumbs-sep">&rsaquo;</span>
+        <span style="color: var(--text-primary); font-weight: 500;">Fact-Check Queue</span>
+      </nav>
+      <h1 style="font-size: 2.25rem; margin: 0;">Fact-Checking & Price Verification Queue</h1>
+      <p style="font-size: 1rem; color: var(--text-muted); margin-top: 0.25rem;">
+        Items flagged as location-dependent, seasonal, or regional requiring active editorial re-verification.
+      </p>
+    </div>
+  </div>
+
+  <div class="callout callout-warning">
+    <h3 style="font-size: 1.1rem; margin-top: 0; margin-bottom: 0.35rem; color: var(--color-amber);">Editorial Accuracy Policy</h3>
+    <p style="font-size: 0.95rem; margin-bottom: 0;">
+      Never mark an item as "Verified Official" without cross-referencing either the official American Dairy Queen Corporation website (<a href="https://www.dairyqueen.com" target="_blank" rel="noopener noreferrer">dairyqueen.com</a>) or point-of-sale franchise receipts.
+    </p>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table-editorial">
+      <thead>
+        <tr>
+          <th>Menu Item & Editorial Notes</th>
+          <th>Category</th>
+          <th>Nutrition Verification</th>
+          <th>Price Verification</th>
+          <th>Promo / Window</th>
+          <th>Last Verified</th>
+          <th>Source Reference</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in items %}
+        <tr>
+          <td>
+            <strong>{{ item.name }}</strong>
+            <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 2px;">{{ item.notes or "No notes" }}</div>
+          </td>
+          <td><span class="badge badge-info">{{ item.category_name }}</span></td>
+          <td>
+            <span class="badge badge-success" style="font-size: 0.75rem;">{{ item.nutrition_verified or "Official ADQ Disclosures" }}</span>
+            <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 2px;">{{ item.calories }}</div>
+          </td>
+          <td>
+            <span class="badge badge-warning" style="font-size: 0.75rem;">{{ item.price_verification or item.verification_status or "Estimated Franchise Range" }}</span>
+            <div style="font-size: 0.8rem; font-weight: 600; color: var(--text-primary); margin-top: 2px;">{{ item.price_formatted }}</div>
+          </td>
+          <td>
+            {% if item.promotion_status == 'active' %}
+              <span class="badge badge-success">Active Promotion</span>
+            {% elif item.promotion_status == 'scheduled' %}
+              <span class="badge badge-purple">Scheduled / Upcoming</span>
+            {% elif item.promotion_status == 'expired' %}
+              <span class="badge badge-danger">Expired</span>
+            {% else %}
+              <span class="badge badge-info">Standard Menu</span>
+            {% endif %}
+            {% if item.effective_start_date or item.effective_end_date %}
+              <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 2px;">
+                {{ item.effective_start_date or "Launch" }} &rarr; {{ item.effective_end_date or "Ongoing" }}
+              </div>
+            {% endif %}
+          </td>
+          <td style="font-size: 0.85rem;">{{ item.last_verified or "Needs check" }}</td>
+          <td>
+            <div style="font-size: 0.8rem; font-weight: 500;">{{ item.source_title or "Official ADQ" }}</div>
+            {% if item.source_url %}
+              <a href="{{ item.source_url }}" target="_blank" rel="noopener noreferrer" style="font-size: 0.8rem; color: var(--color-brand); text-decoration: underline;">Open Source &rarr;</a>
+            {% else %}
+              <span style="font-size: 0.8rem; color: var(--text-muted);">No URL</span>
+            {% endif %}
+          </td>
+          <td>
+            <div style="display: flex; gap: 0.5rem; flex-direction: column;">
+              <form action="/admin/fact-check/verify/{{ item.id }}" method="post" style="display: inline;">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+                <button type="submit" class="btn btn-outline" style="font-size: 0.75rem; padding: 4px 8px; color: var(--color-success); border-color: var(--color-success); width: 100%;">
+                  ✓ Re-verify
+                </button>
+              </form>
+              <a href="/admin/menu-items/edit/{{ item.id }}" class="btn btn-outline" style="font-size: 0.75rem; padding: 4px 8px; text-align: center;">Edit Details</a>
+            </div>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

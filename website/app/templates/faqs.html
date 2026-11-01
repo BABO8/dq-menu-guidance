@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}Dairy Queen FAQs & Ordering Advice (2026 Guide) | DQ Menu Guidance{% endblock %}
+
+{% block meta_description %}Answers to top Dairy Queen questions: operating hours, secret menu rules, franchise price differences, ice cream cake shelf life, and allergens.{% endblock %}
+
+{% block structured_data %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {% for faq in faqs %}
+    {
+      "@type": "Question",
+      "name": {{ faq.question|tojson }},
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": {{ faq.answer|tojson }}
+      }
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="container" style="padding-top: 2rem; padding-bottom: 3.5rem;">
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <a href="/">Home</a>
+    <span class="breadcrumbs-sep">&rsaquo;</span>
+    <span style="color: var(--text-primary); font-weight: 500;">Frequently Asked Questions</span>
+  </nav>
+
+  <div class="article-header">
+    <div class="hero-pill">Consumer Knowledgebase</div>
+    <h1 style="font-size: 2.75rem; margin-bottom: 0.75rem;">Dairy Queen Frequently Asked Questions</h1>
+    <p style="font-size: 1.15rem; color: var(--text-muted); max-width: 820px; line-height: 1.7;">
+      Clear, honest answers to the most common questions regarding Dairy Queen menus, prices, store hours, cake preservation, and franchise policies.
+    </p>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 1rem; max-width: 900px; margin: 0 auto;">
+    {% for faq in faqs %}
+    <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm);">
+      <button type="button" class="faq-toggle" aria-expanded="false" style="width: 100%; text-align: left; padding: 1.25rem 1.5rem; background: none; border: none; font-size: 1.15rem; font-weight: 700; color: var(--text-primary); display: flex; justify-content: space-between; align-items: center; cursor: pointer;">
+        <span>{{ faq.question }}</span>
+        <span style="font-size: 1.5rem; color: var(--color-brand); font-weight: 400;">+</span>
+      </button>
+      <div class="faq-content" style="display: none; padding: 0 1.5rem 1.5rem 1.5rem; font-size: 1rem; color: var(--text-secondary); line-height: 1.8; border-top: 1px solid var(--border-light);">
+        <p style="margin-top: 0.75rem;">{{ faq.answer }}</p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div style="margin-top: 3.5rem; text-align: center; background: #FFFFFF; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 2.5rem; max-width: 900px; margin-left: auto; margin-right: auto;">
+    <h3 style="font-size: 1.5rem; margin-top: 0;">Have a Question We Haven't Covered?</h3>
+    <p style="color: var(--text-muted); font-size: 1rem; margin-bottom: 1.5rem;">
+      Our editorial team regularly reviews franchise policies, nutrition charts, and menu updates.
+    </p>
+    <a href="/contact" class="btn btn-primary">Submit a Question to Our Editors &rarr;</a>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Server Error (500) | DQ Menu Guidance{% endblock %}
+
+{% block meta_description %}An unexpected server error occurred on DQ Menu Guidance. Please try again or return to our homepage.{% endblock %}
+
+{% block content %}
+<div class="container" style="padding: 4rem 1.5rem; text-align: center; max-width: 680px;">
+  <div style="font-size: 4rem; line-height: 1; margin-bottom: 1rem;">⚠️</div>
+  <h1 style="font-size: 2.75rem; margin-bottom: 0.75rem;">Internal Server Error (500)</h1>
+  <p style="font-size: 1.15rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 2rem;">
+    We encountered an unexpected technical issue while preparing this menu guide. Our engineering team has been notified.
+  </p>
+
+  <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;">
+    <a href="/" class="btn btn-primary">Return to Homepage</a>
+    <a href="/menu" class="btn btn-outline">Master Menu Table</a>
+    <a href="/contact" class="btn btn-outline">Report Technical Issue</a>
+  </div>
+</div>
+{% endblock %}

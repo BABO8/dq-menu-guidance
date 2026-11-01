@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}Manage Menu Items | Admin Dashboard{% endblock %}
+
+{% block content %}
+<div class="container" style="padding-top: 2rem; padding-bottom: 4rem;">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+    <div>
+      <nav class="breadcrumbs" aria-label="Breadcrumbs">
+        <a href="/admin/dashboard">Dashboard</a>
+        <span class="breadcrumbs-sep">&rsaquo;</span>
+        <span style="color: var(--text-primary); font-weight: 500;">Menu Items</span>
+      </nav>
+      <h1 style="font-size: 2.25rem; margin: 0;">Verified Menu Items ({{ menu_items|length }})</h1>
+    </div>
+    <div>
+      <a href="/admin/menu-items/new" class="btn btn-primary">+ Add New Menu Item</a>
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table-editorial table-interactive">
+      <thead>
+        <tr>
+          <th data-sortable="true">Name & Slug</th>
+          <th data-sortable="true">Category</th>
+          <th data-sortable="true">Price</th>
+          <th>Calories</th>
+          <th>Verification Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in menu_items %}
+        <tr>
+          <td>
+            <strong>{{ item.name }}</strong>
+            <div style="font-size: 0.8rem; color: var(--text-muted);">{{ item.slug }}</div>
+          </td>
+          <td><span class="badge badge-info">{{ item.category_name }}</span></td>
+          <td class="price-col">{{ item.price_formatted or "Varies" }}</td>
+          <td style="font-size: 0.85rem;">{{ item.calories or "—" }}</td>
+          <td>
+            {% if 'Official' in item.verification_status %}
+              <span class="badge badge-success">{{ item.verification_status }}</span>
+            {% elif 'Seasonal' in item.verification_status %}
+              <span class="badge badge-purple">{{ item.verification_status }}</span>
+            {% else %}
+              <span class="badge badge-warning">{{ item.verification_status }}</span>
+            {% endif %}
+            <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 2px;">{{ item.last_verified }}</div>
+          </td>
+          <td>
+            <div style="display: flex; gap: 0.5rem;">
+              <a href="/admin/menu-items/edit/{{ item.id }}" class="btn btn-outline" style="font-size: 0.8rem; padding: 4px 8px;">Edit</a>
+              <form action="/admin/menu-items/delete/{{ item.id }}" method="post" onsubmit="return confirm('Delete this menu item?');" style="display: inline;">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+                <button type="submit" class="btn btn-outline" style="font-size: 0.8rem; padding: 4px 8px; color: var(--color-brand);">Delete</button>
+              </form>
+            </div>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,201 @@
+{% extends "base.html" %}
+
+{% block title %}Dairy Queen Menu Guides, Reviews & Articles (2026 Archive) | DQ Menu Guidance{% endblock %}
+
+{% block meta_description %}Comprehensive directory of 29 in-depth Dairy Queen menu articles, Blizzard reviews, 2026 price analyses, $7 Meal Deal hacks, Stackburger ratings, and nutrition charts.{% endblock %}
+
+{% block canonical_url %}{{ canonical_url }}{% endblock %}
+
+{% block structured_data %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Dairy Queen Menu Guides, Reviews & Editorial Articles (2026)",
+  "description": "Comprehensive library of verified Dairy Queen consumer guides covering menu prices, Blizzard flavors, meal deals, and nutritional disclosures.",
+  "url": "{{ canonical_url }}",
+  "hasPart": [
+    {% for art in articles %}
+    {
+      "@type": "Article",
+      "headline": {{ art.title|tojson }},
+      "url": "{{ settings.SITE_URL }}/articles/{{ art.slug }}",
+      "datePublished": "{{ art.published_at }}",
+      "dateModified": "{{ art.updated_at }}",
+      "author": {
+        "@type": "Organization",
+        "name": "{{ art.author }}"
+      }
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "{{ settings.SITE_URL }}/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Guides & Articles",
+      "item": "{{ canonical_url }}"
+    }
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="container" style="padding-top: 2rem; padding-bottom: 4rem;">
+  <!-- Breadcrumbs -->
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <a href="/">Home</a>
+    <span class="breadcrumbs-sep">&rsaquo;</span>
+    <span style="color: var(--text-primary); font-weight: 500;">Editorial Guides & Articles</span>
+  </nav>
+
+  <!-- Hub Header -->
+  <header class="article-header" style="margin-bottom: 2rem;">
+    <div class="hero-pill" style="background: var(--bg-accent); color: var(--color-brand); margin-bottom: 0.5rem;">
+      Independent Fast-Food Research & Editorial Library
+    </div>
+    <h1 style="font-size: 2.75rem; margin-bottom: 0.75rem;">Dairy Queen Menu Guides & Articles (2026)</h1>
+    <p style="font-size: 1.15rem; color: var(--text-muted); max-width: 840px; line-height: 1.7; margin-bottom: 1.5rem;">
+      Browse our complete collection of <strong>{{ total_count }} authoritative, fact-checked consumer articles</strong>. From Blizzard cup dimensions and monthly flavor rotations to Stackburger price comparisons and the $7 Meal Deal upgrade hack, every guide is verified against official American Dairy Queen disclosures and store-level receipts.
+    </p>
+
+    <!-- Interactive Search / Filter Bar -->
+    <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 1.25rem; box-shadow: var(--shadow-sm); display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; align-items: center;">
+      <div style="min-width: 260px; flex-grow: 1; max-width: 480px;">
+        <input 
+          type="search" 
+          id="articleFilterInput" 
+          class="form-control" 
+          placeholder="Search all 29 guides (e.g. 'Blizzard', 'Stackburger', 'Calories', 'Texas')..."
+          aria-label="Filter editorial guides"
+          value="{{ search_query }}"
+        >
+      </div>
+
+      <!-- Category Filter Pills -->
+      <div class="filter-pills-wrap" style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+        <a href="/articles" class="filter-pill-btn {% if not active_category %}active{% endif %}" style="text-decoration: none;">
+          All Guides ({{ total_count }})
+        </a>
+        {% for cat in categories %}
+        <a href="/articles?category={{ cat.slug }}" class="filter-pill-btn {% if active_category == cat.slug %}active{% endif %}" style="text-decoration: none;">
+          {{ cat.name }} ({{ cat.article_count }})
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+  </header>
+
+  <!-- Articles Grid -->
+  {% if articles %}
+  <div class="cards-grid" id="articlesGrid">
+    {% for art in articles %}
+    <article class="card card-with-img article-item" data-title="{{ art.title|lower }}" data-summary="{{ (art.summary or '')|lower }}" data-category="{{ (art.category_name or '')|lower }}">
+      <a href="/articles/{{ art.slug }}" style="display: block; overflow: hidden; text-decoration: none;">
+        <picture>
+          <source srcset="/static/images/{{ art.featured_image.img }}.webp" type="image/webp">
+          <img 
+            src="/static/images/{{ art.featured_image.img }}.webp" 
+            alt="{{ art.featured_image.alt }}" 
+            class="card-img-top" 
+            width="400" 
+            height="250" 
+            loading="lazy" 
+            decoding="async"
+          >
+        </picture>
+      </a>
+
+      <div class="card-content" style="padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; gap: 0.5rem; flex-wrap: wrap;">
+          <span class="badge badge-info">{{ art.category_name or "Menu Guide" }}</span>
+          {% if art.is_cornerstone %}
+          <span class="badge badge-warning" style="font-size: 0.75rem;">★ Cornerstone</span>
+          {% endif %}
+        </div>
+
+        <h2 class="card-title" style="font-size: 1.25rem; line-height: 1.4; margin-bottom: 0.5rem;">
+          <a href="/articles/{{ art.slug }}" style="color: var(--text-primary); text-decoration: none;">
+            {{ art.title }}
+          </a>
+        </h2>
+
+        <p class="card-meta" style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+          By <strong>{{ art.author }}</strong> &bull; Reviewed <time datetime="{{ art.updated_at }}">{{ art.updated_at }}</time>
+        </p>
+
+        <p class="card-body" style="font-size: 0.95rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1.25rem; flex-grow: 1;">
+          {{ art.summary }}
+        </p>
+
+        <div class="card-footer" style="padding-top: 1rem; border-top: 1px solid var(--border-light); display: flex; justify-content: space-between; align-items: center; margin-top: auto;">
+          <span style="font-size: 0.8rem; color: var(--color-success); font-weight: 600;">✓ Fact-Checked 2026</span>
+          <a href="/articles/{{ art.slug }}" class="btn btn-outline" style="font-size: 0.85rem; padding: 6px 14px;">
+            Read Full Guide &rarr;
+          </a>
+        </div>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 3rem; text-align: center;">
+    <h3>No articles found matching that criteria</h3>
+    <p style="color: var(--text-muted);">Try selecting a different category or clearing your search term.</p>
+    <a href="/articles" class="btn btn-primary" style="margin-top: 1rem;">View All Guides</a>
+  </div>
+  {% endif %}
+
+  <!-- Editorial Standards & Trust Box -->
+  <div style="margin-top: 3.5rem; background: #FFFFFF; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 2.25rem; box-shadow: var(--shadow-sm);">
+    <div class="hero-pill" style="margin-bottom: 0.5rem;">Editorial Standards & Methodology</div>
+    <h3 style="font-size: 1.5rem; margin-top: 0; margin-bottom: 0.75rem;">How We Research & Fact-Check Our Dairy Queen Guides</h3>
+    <p style="font-size: 1rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1rem;">
+      Fast-food restaurant menus and franchise pricing evolve rapidly. Every guide published in this library is crafted by our dedicated U.S. menu research team using primary sources, including:
+    </p>
+    <ul style="margin-left: 1.5rem; font-size: 0.95rem; color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem;">
+      <li><strong>Official Corporate Documentation:</strong> American Dairy Queen Corporation nutritional disclosure PDFs, press releases, and SEC franchise disclosure documents.</li>
+      <li><strong>Store-Level Receipt Verification:</strong> In-store visits and drive-thru receipts gathered across low-cost (Texas, Ohio), average (Florida, Arizona), and high-cost (California, New York) markets.</li>
+      <li><strong>Government Standards:</strong> U.S. Food and Drug Administration (FDA) menu labeling guidelines (21 CFR 101.11) and FALCPA allergen mandates.</li>
+    </ul>
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+      <a href="/sources-fact-checking" class="btn btn-outline" style="font-size: 0.9rem;">Review Fact-Checking Policy &rarr;</a>
+      <a href="/menu" class="btn btn-primary" style="font-size: 0.9rem;">Browse 2026 Menu Price Table &rarr;</a>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const filterInput = document.getElementById('articleFilterInput');
+  const cards = document.querySelectorAll('.article-item');
+  if (!filterInput || cards.length === 0) return;
+
+  filterInput.addEventListener('input', (e) => {
+    const q = e.target.value.toLowerCase().trim();
+    cards.forEach(card => {
+      const title = card.getAttribute('data-title') || '';
+      const summary = card.getAttribute('data-summary') || '';
+      const category = card.getAttribute('data-category') || '';
+      const match = !q || title.includes(q) || summary.includes(q) || category.includes(q);
+      card.style.display = match ? '' : 'none';
+    });
+  });
+});
+</script>
+{% endblock %}

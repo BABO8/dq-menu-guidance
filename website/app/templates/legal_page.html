@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }} | DQ Menu Guidance{% endblock %}
+
+{% block meta_description %}{{ summary or title }}{% endblock %}
+
+{% block content %}
+<div class="container" style="padding-top: 2rem; padding-bottom: 4rem; max-width: 860px;">
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <a href="/">Home</a>
+    <span class="breadcrumbs-sep">&rsaquo;</span>
+    <span style="color: var(--text-primary); font-weight: 500;">{{ title }}</span>
+  </nav>
+
+  <div class="article-header">
+    <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">{{ title }}</h1>
+    <div style="font-size: 0.85rem; color: var(--text-muted);">
+      Effective Date: October 2026 • DQ Menu Guidance Editorial Standards
+    </div>
+  </div>
+
+  <div class="editorial-prose">
+    {{ content|safe }}
+
+    <!-- Comprehensive Legal & AdSense Compliance Module -->
+    <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border-light); font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7;">
+      <h3 style="font-size: 1.15rem; color: var(--text-primary); margin-bottom: 0.75rem;">Mandatory Disclosures & User Rights</h3>
+      
+      <p><strong>Google AdSense & DoubleClick Cookie Notice:</strong> Third-party advertising vendors, including Google, use cookies (such as the DoubleClick DART cookie) to serve ads based on your visit to this site and other websites across the Internet. You may opt out of the use of the DoubleClick cookie for interest-based advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer">Google Ad Settings</a> or <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer">AboutAds.info</a>.</p>
+      
+      <p><strong>California Privacy Rights (CCPA / CPRA):</strong> California consumers have the right to request access to their personal information, request deletion or correction, and opt out of the sale or sharing of personal information. We do not sell personal information for financial gain. To exercise your rights, visit our <a href="/contact">Editorial Contact Page</a>.</p>
+      
+      <p><strong>European & UK Privacy Rights (GDPR):</strong> If you are browsing from the European Economic Area or United Kingdom, you possess rights under the General Data Protection Regulation including data portability, restriction of processing, and the right to lodge a complaint with your supervisory authority.</p>
+
+      <p><strong>Non-Affiliation Trademark Disclaimer:</strong> DQ Menu Guidance is an independent informational guide for U.S. consumers and is not affiliated with, associated with, authorized by, endorsed by, or in any way officially connected with American Dairy Queen Corporation (dairyqueen.com). All product names, logos, and brands are property of their respective owners.</p>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

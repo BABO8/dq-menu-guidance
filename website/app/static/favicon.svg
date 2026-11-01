@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" fill="none">
+  <defs>
+    <linearGradient id="favDqGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E21837" />
+      <stop offset="100%" stop-color="#B30E26" />
+    </linearGradient>
+    <linearGradient id="favGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFE066" />
+      <stop offset="100%" stop-color="#F59E0B" />
+    </linearGradient>
+    <linearGradient id="favConeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F3A658" />
+      <stop offset="100%" stop-color="#B86618" />
+    </linearGradient>
+    <linearGradient id="favSwirlGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="100%" stop-color="#FFF2E2" />
+    </linearGradient>
+  </defs>
+
+  <!-- App Badge Background -->
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="url(#favDqGrad)" />
+  <rect x="3" y="3" width="58" height="58" rx="13" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" />
+
+  <!-- Soft-Serve Cone Base -->
+  <polygon points="32,56 22,40 42,40" fill="url(#favConeGrad)" stroke="#8A4405" stroke-width="1.2" />
+  <line x1="24.5" y1="44" x2="35.5" y2="52" stroke="#FFE7C7" stroke-width="1" stroke-linecap="round" opacity="0.6" />
+  <line x1="39.5" y1="44" x2="28.5" y2="52" stroke="#7A3902" stroke-width="1" stroke-linecap="round" opacity="0.45" />
+
+  <!-- Swirl Ice Cream Layers -->
+  <path d="M20 40C20 36 24.5 34 32 34C39.5 34 44 36 44 40C44 42 40.5 42.5 32 42.5C23.5 42.5 20 42 20 40Z" fill="url(#favSwirlGrad)" stroke="#ECDBC8" stroke-width="0.8" />
+  <path d="M22.5 34.5C22.5 30.5 26.5 28 32 28C37.5 28 41.5 30.5 41.5 34.5C41 36 37 37 32 37C27 37 23 36 22.5 34.5Z" fill="url(#favSwirlGrad)" stroke="#ECDBC8" stroke-width="0.8" />
+  <path d="M26 28.5C26 23.5 29.5 20 32 20C34 20 36 21.5 36 24C36 26 34 27 32.2 27C30.5 27 27.5 27.5 26 28.5Z" fill="url(#favSwirlGrad)" />
+  <path d="M32 20C33 18 32.5 14.5 30.5 13C29 12 27.5 12.5 27.8 14C28 15.5 30 17 32 20Z" fill="url(#favSwirlGrad)" stroke="#ECDBC8" stroke-width="0.8" />
+
+  <!-- Guidance Star -->
+  <g transform="translate(47, 15)">
+    <path d="M0 -8 L1.8 -1.8 L8 0 L1.8 1.8 L0 8 L-1.8 1.8 L-8 0 L-1.8 -1.8 Z" fill="url(#favGoldGrad)" stroke="#FFFFFF" stroke-width="1" />
+    <circle cx="0" cy="0" r="1.5" fill="#FFFFFF" />
+  </g>
+</svg>

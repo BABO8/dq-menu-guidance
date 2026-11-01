@@ -1,0 +1,224 @@
+{% extends "base.html" %}
+
+{% block title %}Dairy Queen Ice Cream Cake Prices & Sizes (2026 Guide) | DQ Menu Guidance{% endblock %}
+
+{% block meta_description %}Explore Dairy Queen ice cream cake prices, standard 8" and 10" round cakes, party sheet cakes, Blizzard cakes, and Treatzza Pizzas with custom ordering advice.{% endblock %}
+
+{% block structured_data %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MenuSection",
+  "name": "Dairy Queen Ice Cream Cakes",
+  "description": "Standard 8-inch, 10-inch round celebration cakes, Blizzard cakes, and Treatzza Pizzas with 2026 prices and nutritional details.",
+  "hasMenuItem": [
+    {% for item in cake_items %}
+    {
+      "@type": "MenuItem",
+      "name": {{ item.name|tojson }},
+      "description": {{ (item.description or "")|tojson }},
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "USD",
+        "price": "{{ "%.2f"|format(item.price_min) if item.price_min else "31.24" }}",
+        "priceValidUntil": "2026-12-31"
+      }{% if item.calories %},
+      "nutrition": {
+        "@type": "NutritionInformation",
+        "calories": {{ item.calories|tojson }}
+      }{% endif %}
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="container" style="padding-top: 2rem; padding-bottom: 3.5rem;">
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <a href="/">Home</a>
+    <span class="breadcrumbs-sep">&rsaquo;</span>
+    <a href="/menu">Menu & Prices</a>
+    <span class="breadcrumbs-sep">&rsaquo;</span>
+    <span style="color: var(--text-primary); font-weight: 500;">Ice Cream Cakes</span>
+  </nav>
+
+  <div class="article-header">
+    <div class="hero-pill" style="background: var(--color-purple-light); color: var(--color-purple);">Celebration Center</div>
+    <h1 style="font-size: 2.75rem; margin-bottom: 0.75rem;">Dairy Queen Ice Cream Cake Menu & Prices (2026)</h1>
+    <p style="font-size: 1.15rem; color: var(--text-muted); max-width: 820px; line-height: 1.7;">
+      From iconic birthday round cakes to Blizzard® custom cakes and grab-and-go Treatzza Pizzas, here is the complete breakdown of sizes, slice counts, verified price ranges, and lead times.
+    </p>
+
+    <!-- Featured Cake Photography Banner -->
+    <div class="article-lead-image-wrap" style="max-width: 780px;">
+      <picture>
+        <source srcset="/static/images/ice-cream-cake.webp" type="image/webp">
+        <img 
+          src="/static/images/ice-cream-cake.webp" 
+          alt="Dairy Queen Ice Cream Cakes 8-inch and 10-inch round cake prices 2026" 
+          class="article-lead-img" 
+          width="780" 
+          height="438" 
+          loading="lazy" 
+          decoding="async"
+        >
+      </picture>
+      <div class="article-lead-caption">Classic Dairy Queen celebration cakes feature signature fudge and chocolate cookie crunch layers.</div>
+    </div>
+  </div>
+
+  <!-- Popular Celebration Cake Varieties Gallery -->
+  <div style="margin-top: 2rem; margin-bottom: 2.5rem;">
+    <h2 style="font-size: 1.85rem; margin-bottom: 0.5rem;">Celebration Cake Styles & Varieties</h2>
+    <p style="font-size: 1rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+      Whether ordering custom piped messages for birthdays or grabbing a ready-to-celebrate fudge cake from the freezer case, explore the most requested styles.
+    </p>
+
+    <div class="photo-gallery-grid">
+      <div class="gallery-card">
+        <picture>
+          <source srcset="/static/images/birthday-ice-cream-cake.webp" type="image/webp">
+          <img src="/static/images/birthday-ice-cream-cake.webp" alt="Dairy Queen decorated celebration birthday ice cream cake and prices 2026" class="gallery-card-img" width="400" height="300" loading="lazy" decoding="async">
+        </picture>
+        <div class="gallery-card-body">
+          <h3 class="gallery-card-title">Custom Birthday Celebrations</h3>
+          <p class="gallery-card-desc">Personalized with piping gel messages, edible imagery, and festive border trims. Free same-day writing on retail case cakes.</p>
+          <div class="gallery-badge-row">
+            <span class="badge badge-success">Most Requested</span>
+            <span style="color: var(--text-muted);">8" Round &bull; 8–10 Servings</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-card">
+        <picture>
+          <source srcset="/static/images/chocolate-fudge-cake.webp" type="image/webp">
+          <img src="/static/images/chocolate-fudge-cake.webp" alt="Dairy Queen chocolate fudge crunch ice cream cake slice yield 2026" class="gallery-card-img" width="400" height="300" loading="lazy" decoding="async">
+        </picture>
+        <div class="gallery-card-body">
+          <h3 class="gallery-card-title">Decadent Chocolate Fudge</h3>
+          <p class="gallery-card-desc">Double chocolate soft serve paired with an oversized center of cold cocoa fudge and chocolate cookie crunch pieces.</p>
+          <div class="gallery-badge-row">
+            <span class="badge badge-purple">Chocoholic Pick</span>
+            <span style="color: var(--text-muted);">10" Round &bull; 12–16 Servings</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-card">
+        <picture>
+          <source srcset="/static/images/ice-cream-cake.webp" type="image/webp">
+          <img src="/static/images/ice-cream-cake.webp" alt="Dairy Queen Ice Cream Cakes 8-inch and 10-inch round cake prices 2026" class="gallery-card-img" width="400" height="300" loading="lazy" decoding="async">
+        </picture>
+        <div class="gallery-card-body">
+          <h3 class="gallery-card-title">Signature Round 8" & 10" Cakes</h3>
+          <p class="gallery-card-desc">The iconic vanilla top, chocolate base, and crunchy fudge center covered in light, velvety whipped frosting.</p>
+          <div class="gallery-badge-row">
+            <span class="badge badge-info">Classic Recipe</span>
+            <span style="color: var(--text-muted);">$26.99 – $41.99</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="table-responsive" style="margin-bottom: 3rem;">
+    <table class="table-editorial">
+      <thead>
+        <tr>
+          <th>Cake Style & Size</th>
+          <th>Servings</th>
+          <th>Estimated Price Range</th>
+          <th>Layers & Anatomy</th>
+          <th>Order Lead Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <strong>Mini Cake (6" Round)</strong>
+            <div style="font-size: 0.8rem; color: var(--text-muted);">Compact celebration cake</div>
+          </td>
+          <td>2 – 4 servings</td>
+          <td class="price-col">$16.99 – $21.99</td>
+          <td>Vanilla soft serve, cold fudge & chocolate crunch center, chocolate soft serve base</td>
+          <td><span class="badge badge-success">Same-day in display</span></td>
+        </tr>
+        <tr>
+          <td>
+            <strong>8-Inch Round Cake</strong>
+            <div style="font-size: 0.8rem; color: var(--text-muted);">Most popular family birthday size</div>
+          </td>
+          <td>8 – 10 servings</td>
+          <td class="price-col">$26.99 – $34.99</td>
+          <td>Vanilla top, fudge & crunch center, chocolate base, whipped frosting</td>
+          <td><span class="badge badge-success">Same-day / 24h custom</span></td>
+        </tr>
+        <tr>
+          <td>
+            <strong>10-Inch Round Cake</strong>
+            <div style="font-size: 0.8rem; color: var(--text-muted);">Larger parties and office gatherings</div>
+          </td>
+          <td>12 – 16 servings</td>
+          <td class="price-col">$31.99 – $41.99</td>
+          <td>Vanilla top, fudge & crunch center, chocolate base, whipped frosting</td>
+          <td><span class="badge badge-success">Same-day / 24h custom</span></td>
+        </tr>
+        <tr>
+          <td>
+            <strong>Sheet Cake (11" x 14")</strong>
+            <div style="font-size: 0.8rem; color: var(--text-muted);">Large graduations and team parties</div>
+          </td>
+          <td>20 – 24 servings</td>
+          <td class="price-col">$42.99 – $54.99</td>
+          <td>Large rectangular format with full fudge and crunch middle layer</td>
+          <td><span class="badge badge-warning">24 to 48 hours notice</span></td>
+        </tr>
+        <tr>
+          <td>
+            <strong>Blizzard® Cake (8" or 10")</strong>
+            <div style="font-size: 0.8rem; color: var(--text-muted);">Custom flavor upgrade</div>
+          </td>
+          <td>8 – 16 servings</td>
+          <td class="price-col">$32.99 – $44.99</td>
+          <td>Choice of Blizzard on top (OREO®, Reese's®), fudge crunch center, chocolate base</td>
+          <td><span class="badge badge-warning">24 to 48 hours notice</span></td>
+        </tr>
+        <tr>
+          <td>
+            <strong>Treatzza Pizza®</strong>
+            <div style="font-size: 0.8rem; color: var(--text-muted);">Choco Brownie or Reese's</div>
+          </td>
+          <td>6 – 8 servings (Pre-sliced)</td>
+          <td class="price-col">$14.99 – $18.99</td>
+          <td>Fudge crust, soft serve, candy toppings, chocolate drizzle</td>
+          <td><span class="badge badge-success">Ready in freezer case</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
+    <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 2rem;">
+      <h3 style="margin-top: 0; font-size: 1.4rem;">What is a Treatzza Pizza®?</h3>
+      <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text-secondary);">
+        Originally debuted in the 1990s and revived by popular customer demand, the Treatzza Pizza® is a frozen dessert pizza. Built upon a crunchy chocolate cookie fudge crust, topped with smooth vanilla soft serve, and dressed with candy pieces (such as Choco Brownie or Reese's® peanut butter cups), it comes pre-sliced into 8 triangular slices for casual parties.
+      </p>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 2rem;">
+      <h3 style="margin-top: 0; font-size: 1.4rem;">How to Order & Customize</h3>
+      <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text-secondary);">
+        If you need a cake immediately, you can walk into nearly any DQ Grill & Chill or Treat store and select an undecorated round cake from the retail display freezer. The counter crew will pipe personalized names and celebratory messages (e.g. "Happy 10th Birthday Leo!") at no extra charge within 5 minutes.
+      </p>
+    </div>
+  </div>
+
+  <div style="margin-top: 2.5rem; text-align: center; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+    <a href="/cakes/prices-sizes" class="btn btn-primary">Compare Cake Prices & Slice Sizes &rarr;</a>
+    <a href="/articles/dairy-queen-ice-cream-cake-menu-prices" class="btn btn-outline">Read Complete Cake Buyer's Guide &rarr;</a>
+  </div>
+</div>
+{% endblock %}

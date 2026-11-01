@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" fill="none">
+  <defs>
+    <linearGradient id="dqGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E21837" />
+      <stop offset="100%" stop-color="#B30E26" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFE066" />
+      <stop offset="100%" stop-color="#F59E0B" />
+    </linearGradient>
+    <linearGradient id="coneGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F3A658" />
+      <stop offset="100%" stop-color="#B86618" />
+    </linearGradient>
+    <linearGradient id="swirlGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="100%" stop-color="#FFF2E2" />
+    </linearGradient>
+    <filter id="shadowFilter" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="1.5" stdDeviation="1.5" flood-color="#000000" flood-opacity="0.22" />
+    </filter>
+  </defs>
+
+  <!-- App Badge Background -->
+  <rect x="2" y="2" width="44" height="44" rx="11" fill="url(#dqGrad)" filter="url(#shadowFilter)" />
+  <rect x="2.5" y="2.5" width="43" height="43" rx="10.5" stroke="rgba(255,255,255,0.3)" stroke-width="1" />
+
+  <!-- Soft-Serve Cone Base -->
+  <polygon points="24,42 16.5,30 31.5,30" fill="url(#coneGrad)" stroke="#8A4405" stroke-width="0.8" />
+  <!-- Cone Cross-hatching pattern -->
+  <line x1="18.5" y1="33" x2="26.5" y2="39" stroke="#FFE7C7" stroke-width="0.75" stroke-linecap="round" opacity="0.6" />
+  <line x1="29.5" y1="33" x2="21.5" y2="39" stroke="#7A3902" stroke-width="0.75" stroke-linecap="round" opacity="0.45" />
+
+  <!-- Swirl Ice Cream Layers -->
+  <!-- Bottom tier -->
+  <path d="M15 30C15 27 18.5 25.5 24 25.5C29.5 25.5 33 27 33 30C33 31.5 30.5 31.8 24 31.8C17.5 31.8 15 31.5 15 30Z" fill="url(#swirlGrad)" stroke="#ECDBC8" stroke-width="0.6" />
+  <!-- Middle tier -->
+  <path d="M17 26C17 22.8 20 20.8 24 20.8C28 20.8 31 22.8 31 26C30.5 27.2 27.5 27.8 24 27.8C20.5 27.8 17.5 27.2 17 26Z" fill="url(#swirlGrad)" stroke="#ECDBC8" stroke-width="0.6" />
+  <!-- Top swirl with curl tip -->
+  <path d="M19.5 21.2C19.5 17.5 22 15 24 15C25.5 15 27 16.2 27 18C27 19.5 25.5 20.2 24.2 20.2C22.8 20.2 20.5 20.5 19.5 21.2Z" fill="url(#swirlGrad)" />
+  <path d="M24 15C24.8 13.5 24.5 11 23 9.8C22 9 20.8 9.5 21 10.5C21.2 11.5 22.5 12.8 24 15Z" fill="url(#swirlGrad)" stroke="#ECDBC8" stroke-width="0.6" />
+
+  <!-- Guidance Compass Star (Top-Right Symbolizing Navigation & Guidance) -->
+  <g transform="translate(35, 11)">
+    <path d="M0 -6 L1.4 -1.4 L6 0 L1.4 1.4 L0 6 L-1.4 1.4 L-6 0 L-1.4 -1.4 Z" fill="url(#goldGrad)" stroke="#FFFFFF" stroke-width="0.75" />
+    <circle cx="0" cy="0" r="1.1" fill="#FFFFFF" />
+  </g>
+</svg>

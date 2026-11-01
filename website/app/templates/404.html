@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Page Not Found (404) | DQ Menu Guidance{% endblock %}
+
+{% block meta_description %}The requested page could not be located on DQ Menu Guidance. Explore our verified Dairy Queen menu and price guides.{% endblock %}
+
+{% block content %}
+<div class="container" style="padding: 4rem 1.5rem; text-align: center; max-width: 680px;">
+  <div style="font-size: 4rem; line-height: 1; margin-bottom: 1rem;">🍦</div>
+  <h1 style="font-size: 2.75rem; margin-bottom: 0.75rem;">Page Not Found (404)</h1>
+  <p style="font-size: 1.15rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 2rem;">
+    The page or menu guide you were looking for doesn't exist, was renamed, or has moved to a new URL.
+  </p>
+
+  <!-- Search input -->
+  <div style="margin-bottom: 2.5rem;">
+    <form action="/search" method="get">
+      <div class="search-input-wrapper">
+        <input 
+          type="search" 
+          name="q" 
+          class="search-input" 
+          placeholder="Search Blizzard flavors, cake prices, or Stackburgers..." 
+          autocomplete="off"
+          aria-label="Search site"
+          required
+        >
+        <button type="submit" class="search-icon-btn" aria-label="Search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <h2 style="font-size: 1.25rem; margin-bottom: 1rem; color: var(--text-primary);">Popular Destinations</h2>
+  <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;">
+    <a href="/" class="btn btn-primary">Return to Homepage</a>
+    <a href="/menu" class="btn btn-outline">Master Menu Table</a>
+    <a href="/blizzards" class="btn btn-outline">Blizzard® Flavors</a>
+    <a href="/cakes" class="btn btn-outline">Ice Cream Cakes</a>
+    <a href="/deals-coupons" class="btn btn-outline">$7 Meal Deal</a>
+  </div>
+</div>
+{% endblock %}

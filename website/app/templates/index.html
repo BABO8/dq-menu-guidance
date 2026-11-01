@@ -1,0 +1,532 @@
+{% extends "base.html" %}
+
+{% block title %}Dairy Queen Menu & Prices Guide (2026 US Reference) | DQ Menu Guidance{% endblock %}
+
+{% block meta_description %}Explore verified Dairy Queen menu items, estimated 2026 prices across US locations, Blizzard flavors, ice cream cake dimensions, nutrition facts, and value deals.{% endblock %}
+
+{% block structured_data %}
+<script type="application/ld+json">
+{{ faq_json_ld | safe }}
+</script>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="container">
+    <div class="hero-pill">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      Updated October 2026 • Verified US Pricing Data
+    </div>
+    
+    <h1 class="hero-title">Dairy Queen Menu & Prices Guide</h1>
+    <p class="hero-subtitle">
+      An independent, comprehensive reference to help US consumers research fast-food prices, Blizzard® treat sizes, celebration cakes, nutrition facts, and honest ordering advice.
+    </p>
+
+    <!-- Prominent Live Search Box -->
+    <div class="hero-search-box">
+      <form action="/search" method="get">
+        <div class="search-input-wrapper">
+          <input 
+            type="search" 
+            name="q" 
+            class="search-input" 
+            placeholder="Search Blizzard flavors, cake prices, calories, or Stackburgers..." 
+            autocomplete="off"
+            aria-label="Search Dairy Queen menu and prices"
+            required
+          >
+          <button type="submit" class="search-icon-btn" aria-label="Submit search">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          </button>
+        </div>
+      </form>
+      <!-- Live Dropdown Container -->
+      <div class="search-dropdown" role="listbox" aria-label="Search suggestions"></div>
+
+      <!-- Quick category filter pills -->
+      <div class="category-pills" role="navigation" aria-label="Quick Category Jump">
+        <a href="/blizzards" class="cat-pill">🍦 Blizzard® Treats</a>
+        <a href="/blizzards/prices-sizes" class="cat-pill">📏 Sizes & Prices</a>
+        <a href="/cakes" class="cat-pill">🎂 Ice Cream Cakes</a>
+        <a href="/food/burgers" class="cat-pill">🍔 Stackburgers™</a>
+        <a href="/deals-coupons" class="cat-pill">🏷️ $7 Meal Deal</a>
+        <a href="/breakfast" class="cat-pill">☕ Breakfast Hours</a>
+        <a href="/nutrition-allergens" class="cat-pill">🥗 Nutrition & Allergens</a>
+      </div>
+    </div>
+
+    <!-- Hero Food Photography Banner -->
+    <div class="hero-media-wrap">
+      <picture>
+        <source srcset="/static/images/homepage-food-hero.webp" type="image/webp">
+        <img 
+          src="/static/images/homepage-food-hero.webp" 
+          alt="Dairy Queen Menu With Prices 2026 assortment including Blizzards, Stackburgers, chicken strips and fries" 
+          width="800" 
+          height="447" 
+          fetchpriority="high"
+          decoding="async"
+        >
+      </picture>
+    </div>
+  </div>
+</section>
+
+<!-- Featured Category Cards with Food Photography -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <h2 class="section-title">Explore Main Menu Departments</h2>
+        <p class="section-desc">Browse comprehensive price ranges and size breakdowns for every menu department.</p>
+      </div>
+      <a href="/menu" class="btn btn-outline">View Master Price Table &rarr;</a>
+    </div>
+
+    <div class="cards-grid">
+      <!-- Card: Blizzards -->
+      <div class="card card-with-img">
+        <picture>
+          <source srcset="/static/images/blizzard-treats.webp" type="image/webp">
+          <img src="/static/images/blizzard-treats.webp" alt="Dairy Queen Blizzard Treats menu flavors prices and calories 2026" class="card-img-top" width="400" height="250" loading="lazy" decoding="async">
+        </picture>
+        <div class="card-content">
+          <span class="card-badge" style="background: var(--color-brand-light); color: var(--color-brand); width: fit-content;">Blizzards & Soft Serve</span>
+          <h3 class="card-title"><a href="/blizzards">Blizzard® Treats & Flavors</a></h3>
+          <p class="card-meta">Mini, Small, Medium, Large • Candy & Cookie Classics</p>
+          <p class="card-body">
+            Explore iconic favorites from OREO® and Reese's® to Royal core-filled creations, active summer/fall rotations, and secret menu mix-ins.
+          </p>
+          <div class="card-footer">
+            <span style="font-weight: 600; color: var(--text-primary);">$3.89 – $6.99</span>
+            <a href="/blizzards">Flavor Guide &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card: Ice Cream Cakes -->
+      <div class="card card-with-img">
+        <picture>
+          <source srcset="/static/images/ice-cream-cake.webp" type="image/webp">
+          <img src="/static/images/ice-cream-cake.webp" alt="Dairy Queen Ice Cream Cakes 8-inch and 10-inch round cake prices 2026" class="card-img-top" width="400" height="250" loading="lazy" decoding="async">
+        </picture>
+        <div class="card-content">
+          <span class="card-badge" style="background: var(--color-purple-light); color: var(--color-purple); width: fit-content;">Celebrations</span>
+          <h3 class="card-title"><a href="/cakes">Ice Cream Cake Prices</a></h3>
+          <p class="card-meta">8" Round, 10" Round, Sheet Cakes, Treatzza Pizza®</p>
+          <p class="card-body">
+            Detailed pricing, slice yields, fudge-and-crunch center details, and lead-time guidelines for ordering celebration cakes at local DQ franchises.
+          </p>
+          <div class="card-footer">
+            <span style="font-weight: 600; color: var(--text-primary);">$14.99 – $54.99</span>
+            <a href="/cakes">Cake Catalog &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card: Burgers -->
+      <div class="card card-with-img">
+        <picture>
+          <source srcset="/static/images/burger-menu.webp" type="image/webp">
+          <img src="/static/images/burger-menu.webp" alt="Dairy Queen Signature Stackburgers and double cheeseburger menu with prices 2026" class="card-img-top" width="400" height="250" loading="lazy" decoding="async">
+        </picture>
+        <div class="card-content">
+          <span class="card-badge" style="background: var(--color-amber-light); color: var(--color-amber); width: fit-content;">100% Beef</span>
+          <h3 class="card-title"><a href="/food/burgers">Signature Stackburgers™</a></h3>
+          <p class="card-meta">1/3 lb Double, 1/2 lb Triple • FlameThrower®</p>
+          <p class="card-body">
+            The nationwide Stackburger overhaul: seared seasoned beef, melted dual cheeses, toasted bakery buns, and bold FlameThrower sauce.
+          </p>
+          <div class="card-footer">
+            <span style="font-weight: 600; color: var(--text-primary);">$4.69 – $8.99</span>
+            <a href="/food/burgers">Burger Lineup &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card: Chicken Meals -->
+      <div class="card card-with-img">
+        <picture>
+          <source srcset="/static/images/chicken-strip-meal.webp" type="image/webp">
+          <img src="/static/images/chicken-strip-meal.webp" alt="Dairy Queen Crispy Chicken Strip Basket 4-piece and 6-piece price 2026" class="card-img-top" width="400" height="250" loading="lazy" decoding="async">
+        </picture>
+        <div class="card-content">
+          <span class="card-badge" style="background: var(--color-info-light); color: var(--color-info); width: fit-content;">Grill & Chill Meals</span>
+          <h3 class="card-title"><a href="/food">Chicken Strip Baskets</a></h3>
+          <p class="card-meta">4-pc and 6-pc • Buttered Texas Toast & White Gravy</p>
+          <p class="card-body">
+            Explore 100% all-tenderloin white meat chicken strips served the classic way with golden fries and southern country pepper dipping gravy.
+          </p>
+          <div class="card-footer">
+            <span style="font-weight: 600; color: var(--text-primary);">$7.99 – $11.99</span>
+            <a href="/food">Food Baskets &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card: Treats & Sundaes -->
+      <div class="card card-with-img">
+        <picture>
+          <source srcset="/static/images/soft-serve-cone.webp" type="image/webp">
+          <img src="/static/images/soft-serve-cone.webp" alt="Dairy Queen classic vanilla soft-serve ice cream cone prices 2026" class="card-img-top" width="400" height="250" loading="lazy" decoding="async">
+        </picture>
+        <div class="card-content">
+          <span class="card-badge" style="background: var(--color-brand-light); color: var(--color-brand); width: fit-content;">Classic Novelties</span>
+          <h3 class="card-title"><a href="/treats-desserts">Cones, Sundaes & Shakes</a></h3>
+          <p class="card-meta">Dilly® Bars, Buster Bars, Hand-Spun Malts</p>
+          <p class="card-body">
+            Iconic curl-topped soft serve cones, hard chocolate shell dipped cones, packaged Dilly® Bars, and rich hand-spun milkshakes.
+          </p>
+          <div class="card-footer">
+            <span style="font-weight: 600; color: var(--text-primary);">$2.59 – $5.69</span>
+            <a href="/treats-desserts">Treats Catalog &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card: Nutrition & Allergens -->
+      <div class="card card-with-img">
+        <picture>
+          <source srcset="/static/images/nutrition-guide-food.webp" type="image/webp">
+          <img src="/static/images/nutrition-guide-food.webp" alt="Dairy Queen nutrition facts, calories, and allergen disclosures 2026" class="card-img-top" width="400" height="250" loading="lazy" decoding="async">
+        </picture>
+        <div class="card-content">
+          <span class="card-badge" style="background: var(--color-success-light); color: var(--color-success); width: fit-content;">Health & Transparency</span>
+          <h3 class="card-title"><a href="/nutrition-allergens">Nutrition & Allergen Guide</a></h3>
+          <p class="card-meta">Official Calorie Tables & Cross-Contact Alerts</p>
+          <p class="card-body">
+            Official calorie counts by size, non-dairy Dilly® Bar facts, gluten sensitivities, and essential cross-contact warnings for severe nut allergies.
+          </p>
+          <div class="card-footer">
+            <span class="badge badge-warning">Allergen Notice</span>
+            <a href="/nutrition-allergens">Allergen Guide &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Visual Product Spotlight 1: Blizzard Treats -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="spotlight-card">
+      <div class="spotlight-content">
+        <span class="badge badge-purple" style="margin-bottom: 0.75rem;">Iconic Dessert Experience</span>
+        <h2 class="spotlight-title">The Blizzard® Treat Breakdown</h2>
+        <p style="font-size: 1.05rem; line-height: 1.8; color: var(--text-secondary); margin-bottom: 1.5rem;">
+          Since 1985, Dairy Queen's signature soft-serve treat has earned iconic status by defying gravity with its famous upside-down flip. Blended at sub-freezing temperatures with low overrun and packed with real candy, cookie dough, and fruit purees, compare the price-per-ounce value across all four sizes.
+        </p>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <a href="/blizzards" class="btn btn-primary">Browse All Flavors &rarr;</a>
+          <a href="/blizzards/prices-sizes" class="btn btn-outline">Size & Ounce Math</a>
+        </div>
+      </div>
+      <div>
+        <picture>
+          <source srcset="/static/images/blizzard-treats.webp" type="image/webp">
+          <img src="/static/images/blizzard-treats.webp" alt="Dairy Queen Blizzard Treats menu flavors prices and calories 2026" class="spotlight-img" width="600" height="400" loading="lazy" decoding="async">
+        </picture>
+      </div>
+    </div>
+
+    <!-- Visual Product Spotlight 2: Celebration Cakes (Reversed layout) -->
+    <div class="spotlight-card spotlight-reverse" style="margin-bottom: 0;">
+      <div class="spotlight-content">
+        <span class="badge badge-info" style="margin-bottom: 0.75rem;">Party Centerpieces</span>
+        <h2 class="spotlight-title">Ice Cream Celebration Cakes</h2>
+        <p style="font-size: 1.05rem; line-height: 1.8; color: var(--text-secondary); margin-bottom: 1.5rem;">
+          Built without flour sponge cake, classic Dairy Queen cakes feature layers of vanilla and chocolate soft serve sandwiching a secret ribbon of cold cocoa fudge and chocolate cookie crunch. Learn how standard sizes, Blizzard custom upgrades, and Treatzza Pizzas compare in servings and pricing.
+        </p>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <a href="/cakes" class="btn btn-primary">Cake Styles & Varieties &rarr;</a>
+          <a href="/cakes/prices-sizes" class="btn btn-outline">Price & Slice Math</a>
+        </div>
+      </div>
+      <div>
+        <picture>
+          <source srcset="/static/images/ice-cream-cake.webp" type="image/webp">
+          <img src="/static/images/ice-cream-cake.webp" alt="Dairy Queen Ice Cream Cakes 8-inch and 10-inch round cake prices 2026" class="spotlight-img" width="600" height="400" loading="lazy" decoding="async">
+        </picture>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Featured Popular Menu Items Table -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <h2 class="section-title">Verified US Menu Overview</h2>
+        <p class="section-desc">Sample estimated prices and official calories for top-ordered items across the country.</p>
+      </div>
+      <a href="/menu" class="btn btn-primary">Full Interactive Table &rarr;</a>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table-editorial">
+        <thead>
+          <tr>
+            <th>Menu Item</th>
+            <th>Category</th>
+            <th>Available Sizes</th>
+            <th>Estimated Price Range</th>
+            <th>Calories</th>
+            <th>Verification Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in featured_items %}
+          <tr>
+            <td>
+              <strong>{{ item.name }}</strong>
+              <div style="font-size: 0.8rem; color: var(--text-muted);">{{ item.description }}</div>
+            </td>
+            <td><span class="badge badge-info">{{ item.category_name }}</span></td>
+            <td>{{ item.sizes_available or "Standard" }}</td>
+            <td class="price-col">{{ item.price_formatted or "Varies" }}</td>
+            <td style="font-size: 0.9rem;">{{ item.calories or "Varies" }}</td>
+            <td>
+              {% if 'Official' in item.verification_status %}
+                <span class="badge badge-success">{{ item.verification_status }}</span>
+              {% elif 'Seasonal' in item.verification_status %}
+                <span class="badge badge-purple">{{ item.verification_status }}</span>
+              {% else %}
+                <span class="badge badge-warning">{{ item.verification_status }}</span>
+              {% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- In-Depth Editorial Guides & Articles -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header" style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem;">
+      <div>
+        <h2 class="section-title">In-Depth Editorial Research Guides</h2>
+        <p class="section-desc">Original, fact-checked consumer articles addressing top menu and pricing questions.</p>
+      </div>
+      <div>
+        <a href="/articles" class="btn btn-outline" style="font-weight: 600;">
+          View All 29 Guides &rarr;
+        </a>
+      </div>
+    </div>
+
+    <div class="cards-grid">
+      {% for art in articles %}
+      <article class="card">
+        <span class="card-badge" style="background: var(--bg-subtle); color: var(--text-muted);">Cornerstone Guide</span>
+        <h3 class="card-title"><a href="/articles/{{ art.slug }}">{{ art.title }}</a></h3>
+        <p class="card-meta">By {{ art.author }} • Reviewed {{ art.updated_at }}</p>
+        <p class="card-body">{{ art.summary }}</p>
+        <div class="card-footer">
+          <span style="font-size: 0.8rem; color: var(--color-success); font-weight: 600;">✓ Fact-Checked</span>
+          <a href="/articles/{{ art.slug }}">Read Full Guide &rarr;</a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+
+    <div style="text-align: center; margin-top: 2.5rem;">
+      <a href="/articles" class="btn btn-primary" style="padding: 12px 28px; font-size: 1.05rem;">
+        Explore All 29 In-Depth Dairy Queen Articles & Blog Posts &rarr;
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- U.S. Regional Price Comparison Section -->
+<section class="section" style="background: #FFFFFF;">
+  <div class="container">
+    <div style="text-align: center; margin-bottom: 2.5rem;">
+      <div class="hero-pill" style="margin-bottom: 0.5rem;">State-by-State Economic Analysis</div>
+      <h2 class="section-title">U.S. Regional Price Comparison (2026)</h2>
+      <p class="section-desc">Understand how franchise ownership, minimum wages, and commercial overhead shape Dairy Queen prices across different U.S. states.</p>
+    </div>
+
+    <div class="table-responsive" style="max-width: 960px; margin: 0 auto; box-shadow: var(--shadow-sm); border-radius: var(--radius-md);">
+      <table class="table-editorial">
+        <thead>
+          <tr>
+            <th>Regional Tier & Sample States</th>
+            <th>Small Blizzard® (12 oz)</th>
+            <th>Double Stackburger™ Solo</th>
+            <th>4-Pc Chicken Basket</th>
+            <th>8" Round Cake</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <strong>Low-Cost States</strong>
+              <div style="font-size: 0.8rem; color: var(--text-muted);">Texas, Ohio, Indiana, Oklahoma</div>
+            </td>
+            <td class="price-col">$4.59</td>
+            <td class="price-col">$7.39</td>
+            <td class="price-col">$9.49</td>
+            <td class="price-col">$29.99</td>
+          </tr>
+          <tr>
+            <td>
+              <strong>National Average States</strong>
+              <div style="font-size: 0.8rem; color: var(--text-muted);">Florida, Georgia, North Carolina, Arizona</div>
+            </td>
+            <td class="price-col">$4.89</td>
+            <td class="price-col">$7.79</td>
+            <td class="price-col">$9.99</td>
+            <td class="price-col">$32.99</td>
+          </tr>
+          <tr>
+            <td>
+              <strong>High-Cost & Metro States</strong>
+              <div style="font-size: 0.8rem; color: var(--text-muted);">California, New York, Washington, Massachusetts</div>
+            </td>
+            <td class="price-col">$5.49</td>
+            <td class="price-col">$8.49</td>
+            <td class="price-col">$10.99</td>
+            <td class="price-col">$37.99</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Interactive U.S. State Price & Sales Tax Estimator -->
+    <div class="calculator-widget" id="dqPriceCalculator" style="max-width: 960px; margin: 2.5rem auto 0 auto;">
+      <div class="hero-pill" style="margin-bottom: 0.5rem; background: var(--bg-accent); color: var(--color-brand);">Interactive Tool</div>
+      <h3 style="font-size: 1.6rem; margin-top: 0; margin-bottom: 0.5rem;">U.S. State Price & Sales Tax Estimator</h3>
+      <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.5rem;">
+        Select any popular Dairy Queen treat, combo meal, or celebration cake and choose your state's economic cost tier to calculate estimated menu prices, local sales taxes, and total out-of-pocket costs.
+      </p>
+
+      <div class="calc-grid">
+        <div class="form-group" style="margin-bottom: 0;">
+          <label for="indexCalcItem" class="form-label">Select Menu Item / Combo</label>
+          <select id="indexCalcItem" class="form-control calc-item-select">
+            <option value="small-blizzard" selected>Small Blizzard® (12 oz) — $5.59 base</option>
+            <option value="medium-blizzard">Medium Blizzard® (16 oz) — $6.29 base</option>
+            <option value="large-blizzard">Large Blizzard® (21 oz) — $7.19 base</option>
+            <option value="mini-blizzard">Mini Blizzard® (6 oz) — $4.69 base</option>
+            <option value="meal-deal-7">$7 Meal Deal (Strips/Burger, Fries, Drink, Sundae) — $7.00 base</option>
+            <option value="stackburger-combo">Bacon Two Cheese 1/3 lb Stackburger Combo — $9.99 base</option>
+            <option value="flamethrower-combo">FlameThrower® 1/3 lb Stackburger Combo — $10.19 base</option>
+            <option value="chicken-basket-4pc">4-Pc Crispy Chicken Strip Basket — $9.99 base</option>
+            <option value="chicken-basket-6pc">6-Pc Crispy Chicken Strip Basket — $13.49 base</option>
+            <option value="round-cake-8">8" Round Ice Cream Cake (Serves 8-10) — $31.99 base</option>
+            <option value="sheet-cake-11x14">11" x 14" Sheet Cake (Serves 20-24) — $43.99 base</option>
+          </select>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 0;">
+          <label for="indexCalcRegion" class="form-label">Select U.S. State / Economic Tier</label>
+          <select id="indexCalcRegion" class="form-control calc-region-select">
+            <option value="avg" selected>Average U.S. Baseline (FL, GA, NC, AZ, PA, MI) — 1.00x & 7.00% Tax</option>
+            <option value="low">Low-Cost States (TX, OH, IN, OK, MO, TN) — 0.93x & 6.25% Tax</option>
+            <option value="high">High-Cost States (CA, NY, WA, MA, NJ, HI) — 1.12x & 8.88% Tax</option>
+          </select>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 0; max-width: 130px;">
+          <label for="indexCalcQty" class="form-label">Quantity</label>
+          <input type="number" id="indexCalcQty" class="form-control calc-qty-input" value="1" min="1" max="20">
+        </div>
+      </div>
+
+      <!-- Calculated Output Box -->
+      <div class="calc-result-box">
+        <div class="calc-stat-item">
+          <span class="calc-stat-label">National Base</span>
+          <span class="calc-stat-val calc-base-price">$5.59</span>
+        </div>
+        <div class="calc-stat-item">
+          <span class="calc-stat-label">Est. Menu Price</span>
+          <span class="calc-stat-val calc-adj-price">$5.59</span>
+        </div>
+        <div class="calc-stat-item">
+          <span class="calc-stat-label">Estimated Tax</span>
+          <span class="calc-stat-val calc-tax">$0.39 (7.00%)</span>
+        </div>
+        <div class="calc-stat-item">
+          <span class="calc-stat-label">Total at Checkout</span>
+          <span class="calc-stat-val highlight calc-total">$5.98</span>
+        </div>
+        <div class="calc-stat-item">
+          <span class="calc-stat-label">Calories</span>
+          <span class="calc-stat-val success calc-calories">560 - 740 kcal</span>
+        </div>
+      </div>
+
+      <div class="calc-note" style="margin-top: 1rem; font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">
+        <strong>Standard Franchise Tier:</strong> Estimated state sales tax calculated at 7.00%. Independent franchisees set final store prices.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Editorial Standards & Independence Promise -->
+<section class="section">
+  <div class="container">
+    <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+      <h2 style="font-size: 2rem; margin-bottom: 1rem;">Our Price Accuracy & Independence Standards</h2>
+      <p style="font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 1.5rem;">
+        Fast-food menu pricing is subject to independent franchise autonomy, geographic inflation, and local commodity shifts. We believe consumers deserve honest transparency instead of fabricated price lists.
+      </p>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; text-align: left; margin: 2rem 0;">
+        <div style="background: #FFFFFF; padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-light);">
+          <div style="font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem;">🔍 Primary Sourcing</div>
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0;">We cross-reference official ADQ disclosures, SEC franchise documents, and localized store registers.</p>
+        </div>
+        <div style="background: #FFFFFF; padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-light);">
+          <div style="font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem;">⚖️ Transparent Ranges</div>
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0;">We publish realistic price ranges across low and high-cost markets instead of pretending one price fits all.</p>
+        </div>
+        <div style="background: #FFFFFF; padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-light);">
+          <div style="font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem;">🚫 Zero Ad Spam</div>
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0;">No intrusive popups, no fake coupons, and no deceptive ads obscuring the information you came to read.</p>
+        </div>
+      </div>
+
+      <a href="/editorial-policy" class="btn btn-outline">Read Our Full Editorial Policy &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- Frequently Asked Questions -->
+<section class="section section-alt">
+  <div class="container" style="max-width: 860px;">
+    <div style="text-align: center; margin-bottom: 2.5rem;">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <p class="section-desc">Quick answers to common questions about Dairy Queen menus, prices, and ordering.</p>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 1rem;">
+      {% for faq in faqs %}
+      <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: var(--radius-md); overflow: hidden;">
+        <button type="button" class="faq-toggle" aria-expanded="false" style="width: 100%; text-align: left; padding: 1.25rem 1.5rem; background: none; border: none; font-size: 1.1rem; font-weight: 600; color: var(--text-primary); display: flex; justify-content: space-between; align-items: center; cursor: pointer;">
+          <span>{{ faq.question }}</span>
+          <span style="font-size: 1.4rem; color: var(--text-muted);">+</span>
+        </button>
+        <div class="faq-content" style="display: none; padding: 0 1.5rem 1.25rem 1.5rem; font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; border-top: 1px solid var(--border-light);">
+          <p style="margin-top: 0.75rem;">{{ faq.answer }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div style="text-align: center; margin-top: 2rem;">
+      <a href="/faqs" class="btn btn-outline">View All Questions & Answers &rarr;</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

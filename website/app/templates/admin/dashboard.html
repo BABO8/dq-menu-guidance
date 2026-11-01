@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Dashboard | DQ Menu Guidance{% endblock %}
+
+{% block content %}
+<div class="container" style="padding-top: 2rem; padding-bottom: 4rem;">
+  <!-- Admin Navigation Bar -->
+  <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 1rem 1.5rem; margin-bottom: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+    <div style="display: flex; align-items: center; gap: 1rem;">
+      <span class="badge badge-purple" style="font-size: 0.85rem;">Admin Area</span>
+      <span style="font-weight: 700; color: var(--text-primary);">Editorial Control Center</span>
+      <span style="font-size: 0.85rem; color: var(--text-muted);">(Logged in as <strong>{{ user.user }}</strong>)</span>
+    </div>
+
+    <div style="display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap;">
+      <a href="/admin/articles" class="btn btn-outline" style="font-size: 0.85rem; padding: 6px 12px;">Articles</a>
+      <a href="/admin/menu-items" class="btn btn-outline" style="font-size: 0.85rem; padding: 6px 12px;">Menu Items</a>
+      <a href="/admin/fact-check" class="btn btn-outline" style="font-size: 0.85rem; padding: 6px 12px; color: var(--color-amber);">Fact-Check Queue ({{ counts.unverified }})</a>
+      <a href="/admin/keyword-map" class="btn btn-outline" style="font-size: 0.85rem; padding: 6px 12px;">Keyword Map</a>
+      <a href="/admin/contacts" class="btn btn-outline" style="font-size: 0.85rem; padding: 6px 12px;">Inbox ({{ counts.contacts }})</a>
+      <a href="/admin/logout" class="btn btn-outline" style="font-size: 0.85rem; padding: 6px 12px; color: var(--color-brand);">Log Out</a>
+    </div>
+  </div>
+
+  <div class="article-header" style="margin-bottom: 2rem;">
+    <h1 style="font-size: 2.25rem; margin-bottom: 0.25rem;">Content Management Overview</h1>
+    <p style="font-size: 1rem; color: var(--text-muted);">Monitor publication metrics, price verification queues, and user submissions.</p>
+  </div>
+
+  <!-- Metric Summary Cards -->
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-bottom: 3rem;">
+    <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 1.5rem; border-left: 4px solid var(--color-info);">
+      <div style="font-size: 0.85rem; font-weight: 600; text-transform: uppercase; color: var(--text-muted);">Published Articles</div>
+      <div style="font-size: 2.5rem; font-weight: 800; color: var(--text-primary); margin: 0.35rem 0;">{{ counts.articles }}</div>
+      <a href="/admin/articles" style="font-size: 0.85rem; font-weight: 600;">Manage Articles &rarr;</a>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 1.5rem; border-left: 4px solid var(--color-brand);">
+      <div style="font-size: 0.85rem; font-weight: 600; text-transform: uppercase; color: var(--text-muted);">Active Menu Items</div>
+      <div style="font-size: 2.5rem; font-weight: 800; color: var(--text-primary); margin: 0.35rem 0;">{{ counts.menu_items }}</div>
+      <a href="/admin/menu-items" style="font-size: 0.85rem; font-weight: 600;">Manage Menu &rarr;</a>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 1.5rem; border-left: 4px solid var(--color-amber);">
+      <div style="font-size: 0.85rem; font-weight: 600; text-transform: uppercase; color: var(--text-muted);">Needs Fact-Checking</div>
+      <div style="font-size: 2.5rem; font-weight: 800; color: var(--color-amber); margin: 0.35rem 0;">{{ counts.unverified }}</div>
+      <a href="/admin/fact-check" style="font-size: 0.85rem; font-weight: 600; color: var(--color-amber);">Review Verification Queue &rarr;</a>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 1.5rem; border-left: 4px solid var(--color-purple);">
+      <div style="font-size: 0.85rem; font-weight: 600; text-transform: uppercase; color: var(--text-muted);">Contact Messages</div>
+      <div style="font-size: 2.5rem; font-weight: 800; color: var(--text-primary); margin: 0.35rem 0;">{{ counts.contacts }}</div>
+      <a href="/admin/contacts" style="font-size: 0.85rem; font-weight: 600;">View Inbox &rarr;</a>
+    </div>
+  </div>
+
+  <!-- Quick Action Buttons -->
+  <div style="margin-bottom: 2.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+    <a href="/admin/articles/new" class="btn btn-primary">+ Write New Article</a>
+    <a href="/admin/menu-items/new" class="btn btn-primary" style="background: var(--text-primary);">+ Add Menu Item</a>
+    <a href="/admin/keyword-map" class="btn btn-outline">📥 Export Keyword Map CSV</a>
+    <a href="/" target="_blank" class="btn btn-outline">↗ View Live Website</a>
+  </div>
+
+  <!-- Recent Articles Overview -->
+  <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 1.5rem; margin-bottom: 2.5rem;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+      <h2 style="font-size: 1.35rem; margin: 0;">Editorial Articles</h2>
+      <a href="/admin/articles" style="font-size: 0.9rem; font-weight: 600;">View All ({{ counts.articles }}) &rarr;</a>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table-editorial">
+        <thead>
+          <tr>
+            <th>Article Title</th>
+            <th>Category</th>
+            <th>Status</th>
+            <th>Cornerstone</th>
+            <th>Last Updated</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for art in recent_articles %}
+          <tr>
+            <td>
+              <strong>{{ art.title }}</strong>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">Slug: /articles/{{ art.slug }}</div>
+            </td>
+            <td><span class="badge badge-info">{{ art.category_name or "General" }}</span></td>
+            <td><span class="badge badge-success">{{ art.status }}</span></td>
+            <td>{% if art.is_cornerstone %}⭐ Yes{% else %}No{% endif %}</td>
+            <td style="font-size: 0.85rem;">{{ art.updated_at }}</td>
+            <td>
+              <a href="/admin/articles/edit/{{ art.id }}" class="btn btn-outline" style="font-size: 0.8rem; padding: 4px 8px;">Edit</a>
+              <a href="/articles/{{ art.slug }}" target="_blank" class="btn btn-outline" style="font-size: 0.8rem; padding: 4px 8px;">Preview</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

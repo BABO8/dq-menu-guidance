@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}Contact Inquiries | Admin Dashboard{% endblock %}
+
+{% block content %}
+<div class="container" style="padding-top: 2rem; padding-bottom: 4rem;">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+    <div>
+      <nav class="breadcrumbs" aria-label="Breadcrumbs">
+        <a href="/admin/dashboard">Dashboard</a>
+        <span class="breadcrumbs-sep">&rsaquo;</span>
+        <span style="color: var(--text-primary); font-weight: 500;">Inbox</span>
+      </nav>
+      <h1 style="font-size: 2.25rem; margin: 0;">User Messages & Corrections ({{ contacts|length }})</h1>
+    </div>
+  </div>
+
+  {% if not contacts %}
+  <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 3rem; text-align: center; color: var(--text-muted);">
+    No messages received yet. All new user inquiries will appear here.
+  </div>
+  {% else %}
+  <div class="table-responsive">
+    <table class="table-editorial">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Name & Email</th>
+          <th>Subject</th>
+          <th>Message</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for c in contacts %}
+        <tr>
+          <td style="font-size: 0.85rem; white-space: nowrap;">{{ c.created_at[:10] }}</td>
+          <td>
+            <strong>{{ c.name }}</strong>
+            <div style="font-size: 0.8rem; color: var(--text-muted);"><a href="mailto:{{ c.email }}">{{ c.email }}</a></div>
+          </td>
+          <td><span class="badge badge-info">{{ c.subject }}</span></td>
+          <td style="font-size: 0.9rem; max-width: 350px;">{{ c.message }}</td>
+          <td><span class="badge badge-success">{{ c.status }}</span></td>
+          <td>
+            <form action="/admin/contacts/delete/{{ c.id }}" method="post" onsubmit="return confirm('Delete this message?');" style="display: inline;">
+              <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+              <button type="submit" class="btn btn-outline" style="font-size: 0.8rem; padding: 4px 8px; color: var(--color-brand);">Delete</button>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

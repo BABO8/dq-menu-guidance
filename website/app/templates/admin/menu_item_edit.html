@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+
+{% block title %}{% if item %}Edit: {{ item.name }}{% else %}New Menu Item{% endif %} | Admin Dashboard{% endblock %}
+
+{% block content %}
+<div class="container" style="padding-top: 2rem; padding-bottom: 4rem; max-width: 860px;">
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <a href="/admin/dashboard">Dashboard</a>
+    <span class="breadcrumbs-sep">&rsaquo;</span>
+    <a href="/admin/menu-items">Menu Items</a>
+    <span class="breadcrumbs-sep">&rsaquo;</span>
+    <span style="color: var(--text-primary); font-weight: 500;">{% if item %}Edit Item{% else %}New Item{% endif %}</span>
+  </nav>
+
+  <div class="article-header">
+    <h1 style="font-size: 2.25rem; margin-bottom: 0.5rem;">{% if item %}Edit Menu Item{% else %}Add Menu Item{% endif %}</h1>
+  </div>
+
+  <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 2rem; box-shadow: var(--shadow-sm);">
+    <form action="{% if item %}/admin/menu-items/edit/{{ item.id }}{% else %}/admin/menu-items/new{% endif %}" method="post">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+
+      <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1rem;">
+        <div class="form-group">
+          <label for="name" class="form-label">Item Name</label>
+          <input type="text" id="name" name="name" class="form-control" value="{{ item.name if item else '' }}" required>
+        </div>
+
+        <div class="form-group">
+          <label for="category_id" class="form-label">Category</label>
+          <select id="category_id" name="category_id" class="form-control" required>
+            {% for cat in categories %}
+            <option value="{{ cat.id }}" {% if item and item.category_id == cat.id %}selected{% endif %}>{{ cat.name }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="slug" class="form-label">Slug</label>
+        <input type="text" id="slug" name="slug" class="form-control" value="{{ item.slug if item else '' }}" required>
+      </div>
+
+      <div class="form-group">
+        <label for="description" class="form-label">Description & Ingredients</label>
+        <textarea id="description" name="description" class="form-control" style="min-height: 80px;">{{ item.description if item else '' }}</textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="sizes_available" class="form-label">Sizes Available</label>
+        <input type="text" id="sizes_available" name="sizes_available" class="form-control" value="{{ item.sizes_available if item else '' }}" placeholder="e.g. Mini (6 oz), Small (12 oz), Medium (16 oz), Large (21 oz)">
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem;">
+        <div class="form-group">
+          <label for="price_min" class="form-label">Min Price ($)</label>
+          <input type="number" step="0.01" id="price_min" name="price_min" class="form-control" value="{{ item.price_min if item else '' }}">
+        </div>
+
+        <div class="form-group">
+          <label for="price_max" class="form-label">Max Price ($)</label>
+          <input type="number" step="0.01" id="price_max" name="price_max" class="form-control" value="{{ item.price_max if item else '' }}">
+        </div>
+
+        <div class="form-group">
+          <label for="price_formatted" class="form-label">Price Formatted</label>
+          <input type="text" id="price_formatted" name="price_formatted" class="form-control" value="{{ item.price_formatted if item else '' }}" placeholder="$3.99 - $6.49">
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+        <div class="form-group">
+          <label for="calories" class="form-label">Calories</label>
+          <input type="text" id="calories" name="calories" class="form-control" value="{{ item.calories if item else '' }}" placeholder="380 - 1140 kcal">
+        </div>
+
+        <div class="form-group">
+          <label for="allergens" class="form-label">Allergens</label>
+          <input type="text" id="allergens" name="allergens" class="form-control" value="{{ item.allergens if item else '' }}" placeholder="Milk, Soy, Wheat">
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+        <div class="form-group">
+          <label for="verification_status" class="form-label">Overall Verification Status</label>
+          <select id="verification_status" name="verification_status" class="form-control">
+            <option value="Official Calories / Est. Price Range" {% if not item or item.verification_status == 'Official Calories / Est. Price Range' %}selected{% endif %}>Official Calories / Est. Price Range</option>
+            <option value="Verified Official" {% if item and item.verification_status == 'Verified Official' %}selected{% endif %}>Verified Official</option>
+            <option value="Verified Range" {% if item and item.verification_status == 'Verified Range' %}selected{% endif %}>Verified Range</option>
+            <option value="Location-Dependent Range" {% if item and item.verification_status == 'Location-Dependent Range' %}selected{% endif %}>Location-Dependent Range</option>
+            <option value="Seasonal / Limited Time" {% if item and item.verification_status == 'Seasonal / Limited Time' %}selected{% endif %}>Seasonal / Limited Time</option>
+            <option value="Regional / Needs Verification" {% if item and item.verification_status == 'Regional / Needs Verification' %}selected{% endif %}>Regional / Needs Verification</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="last_verified" class="form-label">Last Verified (YYYY-MM)</label>
+          <input type="text" id="last_verified" name="last_verified" class="form-control" value="{{ item.last_verified if item else '2026-10' }}">
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+        <div class="form-group">
+          <label for="nutrition_verified" class="form-label">Nutrition Verification</label>
+          <input type="text" id="nutrition_verified" name="nutrition_verified" class="form-control" value="{{ item.nutrition_verified if item and item.nutrition_verified else 'Official ADQ Disclosures' }}" placeholder="Official ADQ Disclosures">
+        </div>
+
+        <div class="form-group">
+          <label for="price_verification" class="form-label">Price Verification</label>
+          <input type="text" id="price_verification" name="price_verification" class="form-control" value="{{ item.price_verification if item and item.price_verification else 'Estimated Franchise Range' }}" placeholder="Estimated Franchise Range">
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem;">
+        <div class="form-group">
+          <label for="promotion_status" class="form-label">Promotion Status</label>
+          <select id="promotion_status" name="promotion_status" class="form-control">
+            <option value="standard" {% if not item or item.promotion_status == 'standard' %}selected{% endif %}>Standard Menu Item</option>
+            <option value="active" {% if item and item.promotion_status == 'active' %}selected{% endif %}>Active Promotion</option>
+            <option value="scheduled" {% if item and item.promotion_status == 'scheduled' %}selected{% endif %}>Scheduled / Upcoming</option>
+            <option value="expired" {% if item and item.promotion_status == 'expired' %}selected{% endif %}>Expired / Ended</option>
+            <option value="historical" {% if item and item.promotion_status == 'historical' %}selected{% endif %}>Historical Reference</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="effective_start_date" class="form-label">Effective Start Date</label>
+          <input type="text" id="effective_start_date" name="effective_start_date" class="form-control" value="{{ item.effective_start_date if item and item.effective_start_date else '' }}" placeholder="YYYY-MM-DD">
+        </div>
+
+        <div class="form-group">
+          <label for="effective_end_date" class="form-label">Effective End Date</label>
+          <input type="text" id="effective_end_date" name="effective_end_date" class="form-control" value="{{ item.effective_end_date if item and item.effective_end_date else '' }}" placeholder="YYYY-MM-DD">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="source_title" class="form-label">Source Title / Reference Name</label>
+        <input type="text" id="source_title" name="source_title" class="form-control" value="{{ item.source_title if item and item.source_title else 'Official American Dairy Queen Corporation' }}" placeholder="e.g. Official ADQ Nutrition & Allergen Guide">
+      </div>
+
+      <div class="form-group">
+        <label for="source_url" class="form-label">Primary Source URL</label>
+        <input type="url" id="source_url" name="source_url" class="form-control" value="{{ item.source_url if item else 'https://www.dairyqueen.com' }}">
+      </div>
+
+      <div class="form-group">
+        <label for="notes" class="form-label">Editorial Notes</label>
+        <textarea id="notes" name="notes" class="form-control" style="min-height: 70px;">{{ item.notes if item else '' }}</textarea>
+      </div>
+
+      <div class="form-group">
+        <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+          <input type="checkbox" name="is_seasonal" value="1" {% if item and item.is_seasonal %}checked{% endif %}>
+          <span style="font-weight: 600; color: var(--text-primary);">Is Seasonal or Limited Time Offer</span>
+        </label>
+      </div>
+
+      <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+        <button type="submit" class="btn btn-primary" style="padding: 12px 24px;">Save Menu Item &rarr;</button>
+        <a href="/admin/menu-items" class="btn btn-outline" style="padding: 12px 24px;">Cancel</a>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

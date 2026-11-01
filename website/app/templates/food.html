@@ -1,0 +1,182 @@
+{% extends "base.html" %}
+
+{% block title %}Dairy Queen Food Menu & Prices (2026 US Grill & Chill) | DQ Menu Guidance{% endblock %}
+
+{% block meta_description %}Explore the complete Dairy Queen Grill & Chill hot food menu: crispy chicken strip baskets with Texas toast and gravy, Signature Stackburgers, sides, and combos.{% endblock %}
+
+{% block structured_data %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MenuSection",
+  "name": "Dairy Queen Grill & Chill Hot Food Menu",
+  "description": "Crispy chicken strip baskets, Stackburgers, golden fries, and savory sides with 2026 US prices and nutritional facts.",
+  "hasMenuItem": [
+    {% for item in food_items %}
+    {
+      "@type": "MenuItem",
+      "name": {{ item.name|tojson }},
+      "description": {{ (item.description or "")|tojson }},
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "USD",
+        "price": "{{ "%.2f"|format(item.price_min) if item.price_min else "9.99" }}",
+        "priceValidUntil": "2026-12-31"
+      }{% if item.calories %},
+      "nutrition": {
+        "@type": "NutritionInformation",
+        "calories": {{ item.calories|tojson }}
+      }{% endif %}
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="container" style="padding-top: 2rem; padding-bottom: 3.5rem;">
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <a href="/">Home</a>
+    <span class="breadcrumbs-sep">&rsaquo;</span>
+    <a href="/menu">Menu & Prices</a>
+    <span class="breadcrumbs-sep">&rsaquo;</span>
+    <span style="color: var(--text-primary); font-weight: 500;">Food & Meals</span>
+  </nav>
+
+  <div class="article-header">
+    <div class="hero-pill" style="background: var(--color-info-light); color: var(--color-info);">Grill & Chill® Hot Food Hub</div>
+    <h1 style="font-size: 2.75rem; margin-bottom: 0.75rem;">Dairy Queen Food Menu & Prices (2026)</h1>
+    <p style="font-size: 1.15rem; color: var(--text-muted); max-width: 820px; line-height: 1.7;">
+      Looking for hot savory meals? Review verified prices and portion details for Dairy Queen's famous all-tenderloin Chicken Strip Baskets with Texas toast, crispy sides, and combo meal packages.
+    </p>
+    <div style="display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap;">
+      <a href="/food/burgers" class="btn btn-primary" style="font-size: 0.85rem;">Signature Stackburgers™ Lineup &rarr;</a>
+      <a href="/deals-coupons" class="btn btn-outline" style="font-size: 0.85rem;">Check $7 Meal Deal</a>
+    </div>
+
+    <!-- Featured Chicken Meal Photography Banner -->
+    <div class="article-lead-image-wrap" style="max-width: 780px;">
+      <picture>
+        <source srcset="/static/images/chicken-strip-meal.webp" type="image/webp">
+        <img 
+          src="/static/images/chicken-strip-meal.webp" 
+          alt="Dairy Queen Crispy Chicken Strip Basket 4-piece and 6-piece price 2026" 
+          class="article-lead-img" 
+          width="780" 
+          height="438" 
+          loading="lazy" 
+          decoding="async"
+        >
+      </picture>
+      <div class="article-lead-caption">100% all-tenderloin white meat chicken strips with country pepper dipping gravy and grilled Texas toast.</div>
+    </div>
+  </div>
+
+  <div class="callout callout-warning">
+    <h3 style="font-size: 1.1rem; margin-top: 0; margin-bottom: 0.35rem; color: var(--color-amber);">Grill & Chill vs. Treat Store Availability</h3>
+    <p style="font-size: 0.95rem; margin-bottom: 0;">
+      Hot food items (chicken strips, burgers, fries, onion rings) are served exclusively at <strong>DQ® Grill & Chill®</strong> and "Brazier" franchise locations with commercial fryers and grills. Mall counters and standalone Treat-only kiosks do not prepare hot food.
+    </p>
+  </div>
+
+  <!-- Grill & Chill Classics Photo Gallery -->
+  <div style="margin-top: 2rem; margin-bottom: 2.5rem;">
+    <h2 style="font-size: 1.85rem; margin-bottom: 0.5rem;">Popular Grill & Chill® Specialties</h2>
+    <p style="font-size: 1rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+      Made hot-to-order at full-service locations nationwide, explore the core baskets and sides.
+    </p>
+
+    <div class="photo-gallery-grid">
+      <div class="gallery-card">
+        <picture>
+          <source srcset="/static/images/chicken-strip-meal.webp" type="image/webp">
+          <img src="/static/images/chicken-strip-meal.webp" alt="Dairy Queen Crispy Chicken Strip Basket 4-piece and 6-piece price 2026" class="gallery-card-img" width="400" height="300" loading="lazy" decoding="async">
+        </picture>
+        <div class="gallery-card-body">
+          <h3 class="gallery-card-title">Chicken Strip Basket</h3>
+          <p class="gallery-card-desc">100% whole-muscle white meat chicken tenderloins, crispy crinkle-cut fries, warm butter-griddled Texas toast, and black pepper country gravy.</p>
+          <div class="gallery-badge-row">
+            <span class="badge badge-success">#1 Hot Food Item</span>
+            <span style="color: var(--text-muted);">$8.49 (4-pc) / $10.49 (6-pc)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-card">
+        <picture>
+          <source srcset="/static/images/burger-and-fries.webp" type="image/webp">
+          <img src="/static/images/burger-and-fries.webp" alt="Dairy Queen $7 Meal Deal with burger, crispy fries, drink and sundae 2026" class="gallery-card-img" width="400" height="300" loading="lazy" decoding="async">
+        </picture>
+        <div class="gallery-card-body">
+          <h3 class="gallery-card-title">Stackburger™ Combos</h3>
+          <p class="gallery-card-desc">Freshly seared seasoned beef patties with melted cheeses and toasted buns, bundled with hot fries and an icy cold fountain drink.</p>
+          <div class="gallery-badge-row">
+            <span class="badge badge-info">Full Meal</span>
+            <span style="color: var(--text-muted);">$9.19 – $10.99</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-card">
+        <picture>
+          <source srcset="/static/images/french-fries-sides.webp" type="image/webp">
+          <img src="/static/images/french-fries-sides.webp" alt="Dairy Queen french fries, onion rings, and cheese curds sides menu 2026" class="gallery-card-img" width="400" height="300" loading="lazy" decoding="async">
+        </picture>
+        <div class="gallery-card-body">
+          <h3 class="gallery-card-title">Crispy Fries & Onion Rings</h3>
+          <p class="gallery-card-desc">Crispy golden crinkle-cut fries tossed with sea salt, plus premium whole-cut white onion rings coated in crunchy golden batter.</p>
+          <div class="gallery-badge-row">
+            <span class="badge badge-amber">Crispy Sides</span>
+            <span style="color: var(--text-muted);">$2.69 – $4.49</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2 style="font-size: 1.85rem; margin-top: 2rem; margin-bottom: 1.5rem;">Chicken Strip Baskets & Hot Entrées</h2>
+  <div class="cards-grid">
+    {% for item in food_items %}
+    <div class="card">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+        <span class="card-badge" style="background: var(--color-info-light); color: var(--color-info);">
+          {{ item.category_name }}
+        </span>
+        <span class="badge {% if 'Official' in item.verification_status %}badge-success{% else %}badge-warning{% endif %}">
+          {{ item.verification_status }}
+        </span>
+      </div>
+
+      <h3 class="card-title" style="margin-top: 0.5rem;">{{ item.name }}</h3>
+      <p class="card-meta">{{ item.sizes_available }}</p>
+      <p class="card-body">{{ item.description }}</p>
+
+      <div style="background: var(--bg-subtle); border-radius: var(--radius-sm); padding: 8px 12px; margin-bottom: 1rem; font-size: 0.85rem;">
+        <div><strong>Calories:</strong> {{ item.calories }}</div>
+        {% if item.allergens %}<div><strong>Allergens:</strong> {{ item.allergens }}</div>{% endif %}
+      </div>
+
+      <div class="card-footer">
+        <span class="price-col" style="color: var(--color-brand);">{{ item.price_formatted }}</span>
+        <span style="font-size: 0.8rem; color: var(--text-muted);">Verified {{ item.last_verified }}</span>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div style="margin-top: 3.5rem; background: #FFFFFF; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 2.5rem;">
+    <h2 style="font-size: 1.85rem; margin-top: 0; margin-bottom: 1rem;">Why DQ Chicken Strip Baskets Have a Cult Following</h2>
+    <p style="font-size: 1.05rem; line-height: 1.8; color: var(--text-secondary);">
+      In an era where most fast-food chains box tenders in cardboard cartons with peel-back sauce cups, Dairy Queen's Chicken Strip Basket remains an authentic sit-down style platter:
+    </p>
+    <ul style="margin-left: 1.5rem; font-size: 1rem; line-height: 1.8; color: var(--text-secondary); margin-bottom: 1.5rem;">
+      <li><strong>100% White Meat Tenderloins:</strong> Whole muscle chicken tenderloins battered and fried to golden crispness.</li>
+      <li><strong>Buttered Texas Toast:</strong> Thick-cut Texas toast griddled with real butter.</li>
+      <li><strong>Warm Country Gravy:</strong> Southern-style black pepper white dipping gravy served steaming hot.</li>
+    </ul>
+
+    <a href="/articles/dairy-queen-food-menu-prices" class="btn btn-outline">Read Full Grill & Chill Food Review & Prices &rarr;</a>
+  </div>
+</div>
+{% endblock %}

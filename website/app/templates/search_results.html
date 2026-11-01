@@ -1,0 +1,175 @@
+{% extends "base.html" %}
+
+{% block title %}Search Results for "{{ query }}" | DQ Menu Guidance{% endblock %}
+
+{% block meta_description %}Search results for {{ query }} across Dairy Queen menu items, estimated prices, Blizzard flavors, cakes, and consumer guides.{% endblock %}
+
+{% block meta_robots %}
+<meta name="robots" content="noindex, nofollow">
+{% endblock %}
+
+{% block content %}
+<div class="container" style="padding-top: 2rem; padding-bottom: 4rem;">
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <a href="/">Home</a>
+    <span class="breadcrumbs-sep">&rsaquo;</span>
+    <span style="color: var(--text-primary); font-weight: 500;">Search Results</span>
+  </nav>
+
+  <div class="article-header">
+    <h1 style="font-size: 2.25rem; margin-bottom: 0.5rem;">
+      Search Results for <span style="color: var(--color-brand);">"{{ query }}"</span>
+    </h1>
+    <p style="font-size: 1rem; color: var(--text-muted);">
+      Found <strong>{{ total }}</strong> matching results across verified US menu items and editorial guides.
+    </p>
+
+    <!-- Search Box again to refine query -->
+    <div style="max-width: 600px; margin-top: 1.5rem;">
+      <form action="/search" method="get">
+        <div class="search-input-wrapper">
+          <input 
+            type="search" 
+            name="q" 
+            value="{{ query }}" 
+            class="search-input" 
+            placeholder="Search another term (e.g., 'Blizzard sizes', 'cakes', 'FlameThrower')..." 
+            autocomplete="off"
+            aria-label="Refine search query"
+          >
+          <button type="submit" class="search-icon-btn" aria-label="Submit search">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  {% if total == 0 %}
+  <!-- Empty State with Popular Quick Links & WebP Photography -->
+  <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 3rem 2rem; text-align: center; margin-top: 2rem; box-shadow: var(--shadow-sm);">
+    <div style="font-size: 2.5rem; margin-bottom: 0.75rem;">🔍</div>
+    <h2 style="font-size: 1.65rem; margin-bottom: 0.5rem;">No exact results found for "{{ query }}"</h2>
+    <p style="color: var(--text-muted); max-width: 540px; margin: 0 auto 2rem auto; font-size: 1rem; line-height: 1.6;">
+      We could not find any direct matches for that phrase. Try a different query, or explore our most popular U.S. Dairy Queen menu categories below:
+    </p>
+
+    <!-- Popular U.S. Menu Quick Links Grid with WebP Images -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; text-align: left; max-width: 1000px; margin: 0 auto 2rem auto;">
+      <!-- Blizzards -->
+      <a href="/blizzards" class="card" style="text-decoration: none; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s;">
+        <picture>
+          <source srcset="/static/images/blizzard-treats.webp" type="image/webp">
+          <img src="/static/images/blizzard-treats.webp" alt="Dairy Queen Blizzard Flavors" width="300" height="200" loading="lazy" decoding="async" style="width: 100%; height: 140px; object-fit: cover;">
+        </picture>
+        <div style="padding: 1rem;">
+          <h3 style="font-size: 1.1rem; margin: 0 0 0.25rem 0; color: var(--text-primary);">Blizzard® Treats</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Explore sizes, candy blends & prices</p>
+        </div>
+      </a>
+
+      <!-- Stackburgers & Meals -->
+      <a href="/food" class="card" style="text-decoration: none; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s;">
+        <picture>
+          <source srcset="/static/images/burger-menu.webp" type="image/webp">
+          <img src="/static/images/burger-menu.webp" alt="Dairy Queen Grill and Chill Burgers" width="300" height="200" loading="lazy" decoding="async" style="width: 100%; height: 140px; object-fit: cover;">
+        </picture>
+        <div style="padding: 1rem;">
+          <h3 style="font-size: 1.1rem; margin: 0 0 0.25rem 0; color: var(--text-primary);">Grill & Chill® Food</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Stackburgers, chicken baskets & fries</p>
+        </div>
+      </a>
+
+      <!-- $7 Meal Deal & Coupons -->
+      <a href="/deals-coupons" class="card" style="text-decoration: none; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s;">
+        <picture>
+          <source srcset="/static/images/chicken-strip-meal.webp" type="image/webp">
+          <img src="/static/images/chicken-strip-meal.webp" alt="Dairy Queen Meal Deals and Coupons" width="300" height="200" loading="lazy" decoding="async" style="width: 100%; height: 140px; object-fit: cover;">
+        </picture>
+        <div style="padding: 1rem;">
+          <h3 style="font-size: 1.1rem; margin: 0 0 0.25rem 0; color: var(--text-primary);">$7 Meal Deal & Coupons</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Active promotions & rewards app savings</p>
+        </div>
+      </a>
+
+      <!-- Ice Cream Cakes -->
+      <a href="/cakes" class="card" style="text-decoration: none; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s;">
+        <picture>
+          <source srcset="/static/images/ice-cream-cake.webp" type="image/webp">
+          <img src="/static/images/ice-cream-cake.webp" alt="Dairy Queen Ice Cream Cakes" width="300" height="200" loading="lazy" decoding="async" style="width: 100%; height: 140px; object-fit: cover;">
+        </picture>
+        <div style="padding: 1rem;">
+          <h3 style="font-size: 1.1rem; margin: 0 0 0.25rem 0; color: var(--text-primary);">Ice Cream Cakes</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Round cakes, sheet cakes & ordering</p>
+        </div>
+      </a>
+    </div>
+
+    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+      <a href="/menu" class="btn btn-primary">Browse Master Menu Table</a>
+      <a href="/blizzards/nutrition" class="btn btn-outline">Check Calorie & Nutrition Facts</a>
+      <a href="/faqs" class="btn btn-outline">View Frequently Asked Questions</a>
+    </div>
+  </div>
+  {% else %}
+
+  <!-- 1. Matching Menu Items -->
+  {% if menu_items %}
+  <section style="margin-top: 2.5rem;">
+    <h2 style="font-size: 1.65rem; margin-bottom: 1rem;">Matching Menu Items ({{ menu_items|length }})</h2>
+    <div class="table-responsive">
+      <table class="table-editorial">
+        <thead>
+          <tr>
+            <th>Item Name & Description</th>
+            <th>Category</th>
+            <th>Sizes Available</th>
+            <th>Estimated Price</th>
+            <th>Calories</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in menu_items %}
+          <tr>
+            <td>
+              <strong>{{ item.name }}</strong>
+              <div style="font-size: 0.85rem; color: var(--text-muted);">{{ item.description }}</div>
+            </td>
+            <td><span class="badge badge-info">{{ item.category }}</span></td>
+            <td style="font-size: 0.85rem;">{{ item.sizes or "Standard" }}</td>
+            <td class="price-col" style="color: var(--color-brand);">{{ item.price }}</td>
+            <td style="font-size: 0.85rem;">{{ item.calories }}</td>
+            <td>
+              <a href="{{ item.url }}" class="btn btn-outline" style="font-size: 0.8rem; padding: 4px 10px;">View Category</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+  {% endif %}
+
+  <!-- 2. Matching Editorial Guides -->
+  {% if articles %}
+  <section style="margin-top: 3.5rem;">
+    <h2 style="font-size: 1.65rem; margin-bottom: 1rem;">Matching Editorial Guides ({{ articles|length }})</h2>
+    <div class="cards-grid">
+      {% for art in articles %}
+      <article class="card">
+        <span class="card-badge" style="background: var(--bg-subtle);">{{ art.category }}</span>
+        <h3 class="card-title"><a href="{{ art.url }}">{{ art.title }}</a></h3>
+        <p class="card-body" style="font-size: 0.95rem;">{{ art.snippet }}</p>
+        <div class="card-footer">
+          <a href="{{ art.url }}" style="font-weight: 600;">Read Guide &rarr;</a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  {% endif %}
+</div>
+{% endblock %}

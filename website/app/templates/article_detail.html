@@ -1,0 +1,211 @@
+{% extends "base.html" %}
+
+{% block title %}{{ article.meta_title or article.title }} | DQ Menu Guidance{% endblock %}
+
+{% block meta_description %}{{ article.meta_description or article.summary }}{% endblock %}
+
+{% block canonical_url %}{{ canonical_url }}{% endblock %}
+
+{% block og_type %}article{% endblock %}
+
+{% block structured_data %}
+<script type="application/ld+json">
+{{ {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": article.title,
+  "description": article.meta_description or article.summary,
+  "author": {
+    "@type": "Organization",
+    "name": article.author,
+    "url": settings.SITE_URL + "/about"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "DQ Menu Guidance",
+    "url": settings.SITE_URL
+  },
+  "datePublished": article.published_at,
+  "dateModified": article.updated_at,
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": canonical_url
+  }
+}|tojson }}
+</script>
+<script type="application/ld+json">
+{{ {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": settings.SITE_URL + "/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Guides",
+      "item": settings.SITE_URL + "/menu"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": article.title,
+      "item": canonical_url
+    }
+  ]
+}|tojson }}
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="container" style="padding-top: 2rem; padding-bottom: 4rem; max-width: 900px;">
+  <!-- Breadcrumbs -->
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <a href="/">Home</a>
+    <span class="breadcrumbs-sep">&rsaquo;</span>
+    <a href="/menu">Menu Guides</a>
+    <span class="breadcrumbs-sep">&rsaquo;</span>
+    <span style="color: var(--text-primary); font-weight: 500;">{{ article.title }}</span>
+  </nav>
+
+  <!-- Article Header -->
+  <header class="article-header">
+    <div style="display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.75rem; flex-wrap: wrap;">
+      <span class="badge badge-success">✓ Fact-Checked 2026</span>
+      <span class="badge badge-info">{{ article.category_name or "Menu Guide" }}</span>
+    </div>
+
+    <h1 class="article-title">{{ article.title }}</h1>
+    
+    <!-- E-E-A-T Trust Bar -->
+    <div class="eeat-trust-bar">
+      <div class="eeat-badge">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 11 12 14 22 4"></polyline></svg>
+        <span>E-E-A-T Verified</span>
+      </div>
+      <div class="eeat-text">
+        <strong>U.S. Menu Research Team</strong> &bull; Fact-Checked & Updated for 2026 &bull; Official ADQ Disclosures & In-Store Receipts
+      </div>
+    </div>
+
+    <div class="article-meta-bar" style="margin-top: 1rem;">
+      <div>Author: <strong>{{ article.author }}</strong></div>
+      <div>Published: <time datetime="{{ article.published_at }}">{{ article.published_at }}</time></div>
+      <div>Last Fact-Checked: <time datetime="{{ article.updated_at }}">{{ article.updated_at }}</time></div>
+    </div>
+  </header>
+
+  <!-- Featured Editorial Image -->
+  {% if featured_image %}
+  <div class="article-lead-image-wrap">
+    <picture>
+      <source srcset="/static/images/{{ featured_image.img }}.webp" type="image/webp">
+      <img 
+        src="/static/images/{{ featured_image.img }}.webp" 
+        alt="{{ featured_image.alt }}" 
+        class="article-lead-img" 
+        width="800" 
+        height="448" 
+        loading="lazy" 
+        decoding="async"
+      >
+    </picture>
+    <div class="article-lead-caption">{{ featured_image.alt }}</div>
+  </div>
+  {% endif %}
+
+  <!-- Summary Box -->
+  {% if article.summary %}
+  <div style="background: var(--bg-subtle); border-left: 4px solid var(--color-brand); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 1.5rem; margin-bottom: 2rem;">
+    <div style="font-weight: 700; color: var(--text-primary); margin-bottom: 0.35rem; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.5px;">Executive Summary</div>
+    <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin: 0;">{{ article.summary }}</p>
+  </div>
+  {% endif %}
+
+  <!-- Sticky Table of Contents Container -->
+  <div id="tocContainer" class="toc-box" style="display: none; background: #FFFFFF; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 1.5rem; margin-bottom: 2.5rem; box-shadow: var(--shadow-sm);">
+    <div style="font-weight: 700; font-size: 1.1rem; color: var(--text-primary); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+      Table of Contents
+    </div>
+    <ul id="tocList" style="margin: 0; padding-left: 1.25rem; font-size: 0.95rem; line-height: 1.8;"></ul>
+  </div>
+
+  <!-- Main Editorial Body -->
+  <div class="editorial-prose">
+    {{ article.content|safe }}
+  </div>
+
+  <!-- Primary Sources & Fact-Checking Section -->
+  {% if sources %}
+  <div class="sources-card">
+    <h3 class="sources-title">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+      Primary Editorial Sources & Verification References
+    </h3>
+    <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+      In accordance with our <a href="/sources-fact-checking">Fact-Checking Policy</a>, all figures and ingredient assertions in this guide were verified against official disclosures:
+    </p>
+    <ul class="sources-list">
+      {% for src in sources %}
+      <li>
+        &bull; <a href="{{ src.url }}" target="_blank" rel="noopener noreferrer"><strong>{{ src.title }}</strong></a> &mdash; <span style="color: var(--text-muted); font-size: 0.85rem;">{{ src.url }}</span>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+
+  <!-- Editorial Disclaimer -->
+  <div style="margin-top: 2.5rem; padding: 1.25rem; background: var(--bg-main); border: 1px solid var(--border-light); border-radius: var(--radius-sm); font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">
+    <strong>Independence Disclaimer:</strong> {{ settings.DISCLAIMER }}
+  </div>
+
+  <!-- Internal SEO Link Silo Card -->
+  <div class="link-silo-card" style="margin-top: 3.5rem; background: #FFFFFF; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 2rem; box-shadow: var(--shadow-sm);">
+    <h3 style="font-size: 1.4rem; margin-top: 0; margin-bottom: 0.5rem; color: var(--text-primary);">Explore Essential 2026 Dairy Queen Guides</h3>
+    <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1.5rem;">Cross-reference menu prices, cup sizes, nutritional benchmarks, and active nationwide discount codes:</p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem;">
+      <a href="/blizzards/prices-sizes" class="silo-link-item">
+        <span class="silo-icon">🍧</span>
+        <div>
+          <div class="silo-title">Blizzard Prices & Sizes</div>
+          <div class="silo-desc">Compare 6 oz to 21 oz cup costs</div>
+        </div>
+      </a>
+      <a href="/cakes/prices-sizes" class="silo-link-item">
+        <span class="silo-icon">🎂</span>
+        <div>
+          <div class="silo-title">Ice Cream Cake Prices</div>
+          <div class="silo-desc">Round & sheet cake size pricing</div>
+        </div>
+      </a>
+      <a href="/deals-coupons" class="silo-link-item">
+        <span class="silo-icon">🏷️</span>
+        <div>
+          <div class="silo-title">Deals & Coupons (2026)</div>
+          <div class="silo-desc">$7 Meal Deal & DQ Rewards tips</div>
+        </div>
+      </a>
+      <a href="/food" class="silo-link-item">
+        <span class="silo-icon">🍔</span>
+        <div>
+          <div class="silo-title">Burgers & Chicken Baskets</div>
+          <div class="silo-desc">Stackburgers, tenders, sides & fries</div>
+        </div>
+      </a>
+      <a href="/blizzards/nutrition" class="silo-link-item">
+        <span class="silo-icon">📊</span>
+        <div>
+          <div class="silo-title">Blizzard Nutrition & Calories</div>
+          <div class="silo-desc">Full calorie, fat & sugar chart</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+{% endblock %}

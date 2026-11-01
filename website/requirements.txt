@@ -1,0 +1,12 @@
+# Production Dependencies for Dairy Queen Menu & Price Guide
+starlette==1.7.0
+uvicorn==0.54.0
+gunicorn==23.0.0; sys_platform != "win32"
+Jinja2==3.1.6
+python-multipart==0.0.32
+bcrypt==5.0.0
+pillow==12.3.0
+anyio==4.15.1
+httpx==0.28.1
+pytest==9.1.1
+itsdangerous==2.2.0
