@@ -804,6 +804,9 @@ async def llms_txt(request: Request):
     return Response(content, media_type="text/markdown; charset=utf-8")
 
 async def favicon_ico(request: Request):
+    logo_path = Path("app/static/images/logo.svg")
+    if logo_path.exists():
+        return FileResponse(str(logo_path), media_type="image/svg+xml")
     favicon_path = Path("app/static/favicon.svg")
     if favicon_path.exists():
         return FileResponse(str(favicon_path), media_type="image/svg+xml")
