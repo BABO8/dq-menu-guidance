@@ -30,7 +30,33 @@ def safe_int(val, default=None):
     except (ValueError, TypeError):
         return default
 
+from jinja2 import pass_context
+
 templates = Jinja2Templates(directory="app/templates")
+
+_orig_admin_url_for = templates.env.globals.get("url_for")
+@pass_context
+def _compat_admin_url_for(context, name: str, **path_params):
+    if name == "static":
+        filename = path_params.pop("filename", None)
+        if filename and "path" not in path_params:
+            path_params["path"] = filename
+    request = context.get("request")
+    if request is not None and hasattr(request, "url_for"):
+        try:
+            return request.url_for(name, **path_params)
+        except Exception:
+            pass
+    if _orig_admin_url_for is not None:
+        try:
+            return _orig_admin_url_for(context, name, **path_params)
+        except Exception:
+            pass
+    if name == "static":
+        return f"/static/{path_params.get('path', '')}"
+    return f"/{name}"
+
+templates.env.globals["url_for"] = _compat_admin_url_for
 
 def require_admin(request: Request):
     admin = get_current_admin(request)
