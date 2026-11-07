@@ -80,7 +80,7 @@ async def home_page(request: Request):
         articles = c.fetchall()
 
         # Top FAQs
-        c.execute("SELECT * FROM faqs WHERE is_active = 1 ORDER BY display_order ASC LIMIT 5")
+        c.execute("SELECT * FROM faqs WHERE is_active = 1 ORDER BY display_order ASC")
         faqs = c.fetchall()
 
     faq_ld = {

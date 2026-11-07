@@ -56,7 +56,56 @@
     "description": "Independent US consumer guide for Dairy Queen menu prices, Blizzard flavors, ice cream cakes, nutrition facts, and restaurant hours."
   }
   </script>
-  {% block structured_data %}{% endblock %}
+  {% block structured_data %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What time does Dairy Queen close tonight / open today?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most Dairy Queen locations open between 10:00 AM and 11:00 AM and close between 9:00 PM and 10:00 PM on weekdays, with weekend drive-thrus staying open until 10:30 PM or 11:00 PM. Locations serving breakfast (primarily in Texas) open earlier at 6:00 AM or 7:00 AM."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "When does Dairy Queen stop serving breakfast?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "At participating locations (primarily in Texas and select Southern states), Dairy Queen stops serving breakfast at 10:30 AM Monday through Saturday, and 11:00 AM on Sunday, at which point grills transition to the standard lunch menu."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much is a small / medium / large Blizzard at Dairy Queen?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In 2026, U.S. national average Blizzard prices are approximately $4.69 to $5.39 for a Mini (6 oz), $5.39 to $6.19 for a Small (12 oz), $6.09 to $6.89 for a Medium (16 oz), and $6.79 to $7.69 for a Large (21 oz)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Dairy Queen have dairy-free or gluten-free options / fries?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Dairy Queen offers packaged Non-Dairy Dilly Bars (vegan and gluten-free) and fruit Starkiss Bars. While French fry ingredients are gluten-free, fries are fried in shared oil with breaded gluten items, so cross-contact is possible."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How to order Dairy Queen ice cream cakes online?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You can order custom Dairy Queen ice cream cakes online at participating locations via DQcakes.com or through the official DQ mobile app. Walk-in customers can also choose from ready-made cakes in the display freezer with free on-the-spot personalized message piping."
+        }
+      }
+    ]
+  }
+  </script>
+  {% endblock %}
 </head>
 <body>
   <!-- Accessibility Skip Link -->
