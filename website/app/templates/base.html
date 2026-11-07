@@ -20,7 +20,7 @@
   <meta property="og:title" content="{% block og_title %}{{ self.title() }}{% endblock %}">
   <meta property="og:description" content="{% block og_description %}{{ self.meta_description() }}{% endblock %}">
   <meta property="og:url" content="{{ canonical_url }}">
-  <meta name="keywords" content="Dairy Queen Menu with Prices, DQ Blizzard Menu, Dairy Queen Ice Cream Cakes, Dairy Queen Hours & Closing Time, Nutritional Guide & Allergen Menu, DQ Blizzard Sizes and Prices, Dairy Queen Dipped Cones, Grill & Chill Meal Deals, dq blizzars, dairy wueen, dairyqueen cake, dairy quenn">
+  <meta name="keywords" content="Dairy Queen Menu with Prices, DQ Blizzard Menu, Dairy Queen Ice Cream Cakes, Dairy Queen Hours & Closing Time, Dairy Queen Cake Sizes and Prices, Orange Julius & Dairy Queen Menu, Breakfast Hours & Menu, Nutritional Guide & Allergen Menu, DQ Blizzard Sizes and Prices, Dairy Queen Dipped Cones, Grill & Chill Meal Deals, Chicken Strip Basket Price, 5 Dollar Meal, 2 for $4 Menu, dq blizzars, dairy wueen, dairyqueen cake, dairy quenn, dairy queen hoirs, dairy queen houra, dairy queen gours, dq qyeen hours, daiey queen hours, dsiry queen hours">
   <meta property="og:image" content="{{ settings.SITE_URL }}/static/images/homepage-food-hero.webp">
   <meta name="twitter:image" content="{{ settings.SITE_URL }}/static/images/homepage-food-hero.webp">
   <meta name="twitter:card" content="summary_large_image">
@@ -64,42 +64,42 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "What time does Dairy Queen close tonight / open today?",
+        "name": "What time does Dairy Queen close tonight / open today / on Sundays?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Most Dairy Queen locations open between 10:00 AM and 11:00 AM and close between 9:00 PM and 10:00 PM on weekdays, with weekend drive-thrus staying open until 10:30 PM or 11:00 PM. Locations serving breakfast (primarily in Texas) open earlier at 6:00 AM or 7:00 AM."
+          "text": "Most Dairy Queen locations open between 10:00 AM and 11:00 AM and close between 9:00 PM and 10:00 PM Monday through Thursday, with drive-thrus open until 10:30 PM or 11:00 PM on Friday and Saturday. On Sundays, DQ stores typically open at 10:30 AM or 11:00 AM and close around 9:30 PM or 10:00 PM. Stores serving Texas Country Foods breakfast open earlier at 6:00 AM or 7:00 AM daily."
         }
       },
       {
         "@type": "Question",
-        "name": "When does Dairy Queen stop serving breakfast?",
+        "name": "Does Dairy Queen serve breakfast all day or when does it end?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "At participating locations (primarily in Texas and select Southern states), Dairy Queen stops serving breakfast at 10:30 AM Monday through Saturday, and 11:00 AM on Sunday, at which point grills transition to the standard lunch menu."
+          "text": "No, Dairy Queen does not serve breakfast all day. Breakfast is only served at participating locations (primarily in Texas and select Southern states) and ends promptly at 10:30 AM Monday through Saturday, and 11:00 AM on Sunday, transitioning to the lunch menu."
         }
       },
       {
         "@type": "Question",
-        "name": "How much is a small / medium / large Blizzard at Dairy Queen?",
+        "name": "How much is an ice cream cake or a large Blizzard at Dairy Queen?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "In 2026, U.S. national average Blizzard prices are approximately $4.69 to $5.39 for a Mini (6 oz), $5.39 to $6.19 for a Small (12 oz), $6.09 to $6.89 for a Medium (16 oz), and $6.79 to $7.69 for a Large (21 oz)."
+          "text": "In 2026, a Large (21 oz) Blizzard costs between $5.99 and $7.19 (national average $6.59). Dairy Queen ice cream cakes range from $16.99–$21.99 for a 6-inch Mini (serves 2–4), $26.99–$34.99 for an 8-inch round (serves 8–10), $31.99–$41.99 for a 10-inch round (serves 12–16), and $42.99–$54.99 for an 11x14 Sheet Cake (serves 20–24)."
         }
       },
       {
         "@type": "Question",
-        "name": "Does Dairy Queen have dairy-free or gluten-free options / fries?",
+        "name": "Is Dairy Queen open on holidays (Fourth of July, Easter, Thanksgiving, New Year)?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Dairy Queen offers packaged Non-Dairy Dilly Bars (vegan and gluten-free) and fruit Starkiss Bars. While French fry ingredients are gluten-free, fries are fried in shared oil with breaded gluten items, so cross-contact is possible."
+          "text": "Most Dairy Queen locations remain open on the Fourth of July, Memorial Day, and Labor Day. On Easter Sunday and New Year's Day, stores frequently operate on reduced holiday hours. Virtually all Dairy Queen restaurants nationwide are closed on Thanksgiving Day and Christmas Day."
         }
       },
       {
         "@type": "Question",
-        "name": "How to order Dairy Queen ice cream cakes online?",
+        "name": "Does Dairy Queen still sell Orange Julius?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "You can order custom Dairy Queen ice cream cakes online at participating locations via DQcakes.com or through the official DQ mobile app. Walk-in customers can also choose from ready-made cakes in the display freezer with free on-the-spot personalized message piping."
+          "text": "Yes, select co-branded DQ / Orange Julius locations and shopping mall kiosks still sell Original Orange Julius and fruit smoothies. While American Dairy Queen phased out new Orange Julius co-branding across standalone Grill & Chill locations starting in 2019, hundreds of legacy and mall locations continue serving them daily."
         }
       }
     ]
@@ -244,11 +244,14 @@
         <a href="/menu" style="color: inherit; text-decoration: underline;">Dairy Queen Menu with Prices</a> &bull; 
         <a href="/blizzards" style="color: inherit; text-decoration: underline;">DQ Blizzard Menu &amp; Flavors</a> &bull; 
         <a href="/blizzards/prices-sizes" style="color: inherit; text-decoration: underline;">DQ Blizzard Sizes and Prices</a> &bull; 
-        <a href="/cakes" style="color: inherit; text-decoration: underline;">Dairy Queen Ice Cream Cakes</a> &bull; 
+        <a href="/cakes" style="color: inherit; text-decoration: underline;">Dairy Queen Cake Sizes and Prices</a> &bull; 
         <a href="/breakfast" style="color: inherit; text-decoration: underline;">Dairy Queen Hours &amp; Closing Time</a> &bull; 
+        <a href="/breakfast" style="color: inherit; text-decoration: underline;">Breakfast Hours &amp; Menu</a> &bull; 
+        <a href="/treats-desserts" style="color: inherit; text-decoration: underline;">Orange Julius &amp; Dairy Queen Menu</a> &bull; 
         <a href="/nutrition-allergens" style="color: inherit; text-decoration: underline;">Nutritional Guide &amp; Allergen Menu</a> &bull; 
         <a href="/treats-desserts" style="color: inherit; text-decoration: underline;">Dairy Queen Dipped Cones</a> &bull; 
         <a href="/deals-coupons" style="color: inherit; text-decoration: underline;">Grill &amp; Chill Meal Deals</a> &bull; 
+        <a href="/deals-coupons" style="color: inherit; text-decoration: underline;">Chicken Strip Basket Price &amp; 2 for $4</a> &bull; 
         <a href="/food/burgers" style="color: inherit; text-decoration: underline;">Combos, Burgers &amp; French Fries</a>
       </div>
 

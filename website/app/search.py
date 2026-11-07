@@ -22,6 +22,21 @@ COMMON_QUERY_VARIANTS = {
     "dillybars": "dilly bar",
     "stack burger": "stackburger",
     "stack burgers": "stackburger",
+    "dairy queen hoirs": "dairy queen hours",
+    "dairy queen houra": "dairy queen hours",
+    "dairy queen gours": "dairy queen hours",
+    "dq qyeen hours": "dairy queen hours",
+    "daiey queen hours": "dairy queen hours",
+    "dsiry queen hours": "dairy queen hours",
+    "dairy wueen hours": "dairy queen hours",
+    "orange julius dq": "orange julius dairy queen",
+    "orange julius menu": "orange julius smoothies",
+    "sugar free ice cream cake": "sugar free cake",
+    "sugar-free cake": "sugar free cake",
+    "sheet cake size": "sheet cake",
+    "5 dollar meal": "5 meal deal",
+    "2 for 4": "2 for 4 menu",
+    "2 for $4": "2 for 4 menu",
 }
 
 def normalize_query_variants(q: str) -> str:
