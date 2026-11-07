@@ -95,15 +95,19 @@
       </div>
     </div>
 
-    <!-- Category Filter Buttons -->
-    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
-      <a href="/menu" class="btn btn-outline" style="font-size: 0.85rem; padding: 6px 12px; {% if not selected_category %}background: var(--color-brand); color: #fff; border-color: var(--color-brand);{% endif %}">All Categories</a>
+  <!-- Sticky Mobile-Friendly Category Navigation Bar -->
+  <nav class="sticky-category-nav" aria-label="Menu Category Navigation">
+    <div class="sticky-category-scroll">
+      <a href="/menu" class="sticky-category-pill {% if not selected_category %}active{% endif %}">
+        All Categories
+      </a>
       {% for cat in categories %}
-      <a href="/menu?category={{ cat.slug }}" class="btn btn-outline" style="font-size: 0.85rem; padding: 6px 12px; {% if selected_category == cat.slug %}background: var(--color-brand); color: #fff; border-color: var(--color-brand);{% endif %}">
+      <a href="/menu?category={{ cat.slug }}" class="sticky-category-pill {% if selected_category == cat.slug %}active{% endif %}">
         {{ cat.name }}
       </a>
       {% endfor %}
     </div>
+  </nav>
   </div>
 
   <!-- Interactive Menu Table -->
