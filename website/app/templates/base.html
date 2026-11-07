@@ -20,6 +20,9 @@
   <meta property="og:title" content="{% block og_title %}{{ self.title() }}{% endblock %}">
   <meta property="og:description" content="{% block og_description %}{{ self.meta_description() }}{% endblock %}">
   <meta property="og:url" content="{{ canonical_url }}">
+  <meta name="keywords" content="Dairy Queen Menu with Prices, DQ Blizzard Menu, Dairy Queen Ice Cream Cakes, Dairy Queen Hours & Closing Time, Nutritional Guide & Allergen Menu, DQ Blizzard Sizes and Prices, Dairy Queen Dipped Cones, Grill & Chill Meal Deals, dq blizzars, dairy wueen, dairyqueen cake, dairy quenn">
+  <meta property="og:image" content="{{ settings.SITE_URL }}/static/images/homepage-food-hero.webp">
+  <meta name="twitter:image" content="{{ settings.SITE_URL }}/static/images/homepage-food-hero.webp">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{% block twitter_title %}{{ self.title() }}{% endblock %}">
   <meta name="twitter:description" content="{% block twitter_description %}{{ self.meta_description() }}{% endblock %}">
@@ -41,6 +44,16 @@
       "target": "{{ settings.SITE_URL }}/search?q={search_term_string}",
       "query-input": "required name=search_term_string"
     }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "DQ Menu Guidance",
+    "url": "{{ settings.SITE_URL }}",
+    "logo": "{{ settings.SITE_URL }}/static/images/logo.svg",
+    "description": "Independent US consumer guide for Dairy Queen menu prices, Blizzard flavors, ice cream cakes, nutrition facts, and restaurant hours."
   }
   </script>
   {% block structured_data %}{% endblock %}
@@ -174,6 +187,20 @@
             <li><a href="/disclaimer">Legal Disclaimer</a></li>
           </ul>
         </div>
+      </div>
+
+      <!-- Popular Consumer Searches & Secondary Keyword Index -->
+      <div class="footer-topic-bar" style="margin-top: 2rem; padding: 1.25rem 0; border-top: 1px solid var(--border-light); font-size: 0.85rem; color: var(--text-muted); line-height: 1.8;">
+        <span style="font-weight: 600; color: var(--text-primary); margin-right: 0.5rem;">Popular Consumer Searches:</span>
+        <a href="/menu" style="color: inherit; text-decoration: underline;">Dairy Queen Menu with Prices</a> &bull; 
+        <a href="/blizzards" style="color: inherit; text-decoration: underline;">DQ Blizzard Menu &amp; Flavors</a> &bull; 
+        <a href="/blizzards/prices-sizes" style="color: inherit; text-decoration: underline;">DQ Blizzard Sizes and Prices</a> &bull; 
+        <a href="/cakes" style="color: inherit; text-decoration: underline;">Dairy Queen Ice Cream Cakes</a> &bull; 
+        <a href="/breakfast" style="color: inherit; text-decoration: underline;">Dairy Queen Hours &amp; Closing Time</a> &bull; 
+        <a href="/nutrition-allergens" style="color: inherit; text-decoration: underline;">Nutritional Guide &amp; Allergen Menu</a> &bull; 
+        <a href="/treats-desserts" style="color: inherit; text-decoration: underline;">Dairy Queen Dipped Cones</a> &bull; 
+        <a href="/deals-coupons" style="color: inherit; text-decoration: underline;">Grill &amp; Chill Meal Deals</a> &bull; 
+        <a href="/food/burgers" style="color: inherit; text-decoration: underline;">Combos, Burgers &amp; French Fries</a>
       </div>
 
       <!-- Legal Independence Notice -->

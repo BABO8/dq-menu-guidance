@@ -1422,6 +1422,36 @@ def seed_all(force: bool = False):
                 "How do I get free Dairy Queen treats on my birthday?",
                 "By signing up for the official DQ® Rewards program in the mobile app, members receive an annual birthday coupon (typically a buy-one-get-one Blizzard offer or discounted treat) delivered to their account wallet during their birth month.",
                 8, 1
+            ),
+            (
+                cat_map["breakfast"],
+                "What time does Dairy Queen close tonight / open today?",
+                "Standard Dairy Queen operating hours vary by franchise location and format. Most DQ Grill & Chill restaurants open their dining rooms between 10:00 AM and 10:30 AM for lunch service, while Texas Country Foods locations serving breakfast open earlier at 6:00 AM or 7:00 AM. In the evening, dining room lobbies typically close between 9:30 PM and 10:00 PM, while drive-thru windows commonly stay open until 10:30 PM, 11:00 PM, or midnight on Fridays and Saturdays. Use the official DQ store locator or app to verify exact closing times for your local store tonight.",
+                9, 1
+            ),
+            (
+                cat_map["breakfast"],
+                "When does Dairy Queen stop serving breakfast?",
+                "At participating locations that serve breakfast (primarily across Texas Country Foods restaurants and select Southern franchises), Dairy Queen stops serving breakfast at 10:30 AM Monday through Friday, and at 11:00 AM on Saturdays and Sundays. Grills and fryers then switch completely to the afternoon lunch, Stackburger™, and chicken strip menu.",
+                10, 1
+            ),
+            (
+                cat_map["blizzards"],
+                "How much is a small / medium / large Blizzard at Dairy Queen?",
+                "Nationwide 2026 Dairy Queen Blizzard prices average: Mini (6 oz) costs $3.89 – $4.69; Small (12 oz) costs $4.69 – $5.49; Medium (16 oz) costs $5.29 – $6.29; and Large (21 oz) costs $5.99 – $7.19. Royal core-filled Blizzards or seasonal specialty rotations carry a modest $0.40 to $0.70 premium over standard candy classics.",
+                11, 1
+            ),
+            (
+                cat_map["nutrition"],
+                "Does Dairy Queen have dairy-free or gluten-free options / fries?",
+                "Yes, with important allergen distinctions. For dairy-free diners, Dairy Queen offers factory-sealed Non-Dairy Dilly® Bars made with coconut cream and vegan chocolate shell (traditional soft serve contains milk). For gluten-conscious guests, soft serve in a cup, vanilla shakes, and sundaes (chocolate, strawberry, hot fudge) contain no gluten ingredients. However, Dairy Queen french fries are cooked in shared commercial fryers with breaded chicken strips and onion rings, so they carry a cross-contact risk for individuals with Celiac disease.",
+                12, 1
+            ),
+            (
+                cat_map["cakes"],
+                "How to order Dairy Queen ice cream cakes online?",
+                "You can easily order custom Dairy Queen ice cream cakes online at DQCakes.com or through the official DQ mobile app. Select your preferred store, choose between 8-inch round (serves 8–10), 10-inch round (serves 12–16), or sheet cake sizes, customize your Blizzard flavor layer or classic fudge crunch center, and personalize with custom icing colors, edible photo prints, and celebration messages. Custom orders require 24 to 48 hours advance notice, while pre-made classic cakes can be bought directly from the store freezer case anytime.",
+                13, 1
             )
         ]
 

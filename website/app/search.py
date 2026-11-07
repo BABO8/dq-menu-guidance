@@ -9,6 +9,28 @@ def clean_query(q: str) -> str:
     q = re.sub(r'[^a-zA-Z0-9\s\$\-\&]', ' ', q)
     return " ".join(q.split())[:80].strip()
 
+# Common user search typos and semantic query variants
+COMMON_QUERY_VARIANTS = {
+    "dairy wueen": "dairy queen",
+    "dairy quenn": "dairy queen",
+    "dairyqueen": "dairy queen",
+    "dq blizzars": "dq blizzard",
+    "blizzars": "blizzard",
+    "blizard": "blizzard",
+    "dairyqueen cake": "dairy queen cake",
+    "dillybar": "dilly bar",
+    "dillybars": "dilly bar",
+    "stack burger": "stackburger",
+    "stack burgers": "stackburger",
+}
+
+def normalize_query_variants(q: str) -> str:
+    lower_q = q.lower()
+    for variant, canonical in COMMON_QUERY_VARIANTS.items():
+        if variant in lower_q:
+            lower_q = lower_q.replace(variant, canonical)
+    return lower_q
+
 def search_site(query: str, limit: int = 25) -> Dict[str, Any]:
     """
     Searches published articles and verified menu items for the query.
@@ -18,7 +40,8 @@ def search_site(query: str, limit: int = 25) -> Dict[str, Any]:
     if not clean_q or len(clean_q) < 2:
         return {"query": query, "articles": [], "menu_items": [], "total": 0}
 
-    terms = clean_q.lower().split()
+    normalized_q = normalize_query_variants(clean_q)
+    terms = normalized_q.lower().split()
     results_articles = []
     results_menu = []
 
